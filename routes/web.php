@@ -1,5 +1,3 @@
 <?php
 
-Route::get('/', function () {
-    return view('index')->withTitle('St');
-});
+Route::get('/', 'IndexController@renderPage')->name('home');
