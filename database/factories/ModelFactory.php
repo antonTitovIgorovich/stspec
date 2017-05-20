@@ -11,8 +11,10 @@
 |
 */
 
+use Faker\Generator as Faker;
+
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(St\Models\User::class, function (Faker $faker) {
     static $password;
 
     return [
@@ -20,5 +22,22 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(St\Models\Service::class, function (Faker $faker) {
+    return [
+        'title' => $faker->word,
+        'desc' => $faker->sentence(4),
+        'text' => $faker->paragraph(),
+        'img' => $faker->imageUrl(600, 500),
+    ];
+});
+
+
+$factory->define(St\Models\Stock::class, function (Faker $faker) {
+    return [
+        'title' => $faker->word,
+        'text' => $faker->paragraph()
     ];
 });

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Providers;
+namespace St\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+//        DB::listen(function($query){
+//            dump($query->sql);
+//            dump($query->bindings);
+//        });
     }
 
     /**

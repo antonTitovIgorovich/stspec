@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +12,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->call(ServiceSeeder::class);
+        $this->command->info('Таблица services заполненна данными!');
+        $this->call(StockSeeder::class);
+        $this->command->info('Таблица stock заполненна данными!');
+    }
+}
+
+class ServiceSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('services')->delete();
+        factory('St\Models\Service', 8)->create();
+    }
+}
+
+class StockSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('stocks')->delete();
+        factory('St\Models\Stock', 2)->create();
     }
 }
