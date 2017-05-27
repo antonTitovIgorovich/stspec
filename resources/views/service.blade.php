@@ -27,7 +27,7 @@
                         <img class="img-responsive" alt="{{ $content->title }}" src="{{ $content->img }}">
                     </div>
                     <div class="portfolio-content">
-                        <p>{{$content->text}}</p>
+                        <p>{!! $content->text !!}</p>
                     </div>
 
                 </div>
