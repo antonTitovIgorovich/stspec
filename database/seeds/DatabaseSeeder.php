@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -9,30 +8,24 @@ class DatabaseSeeder extends Seeder
      * Run the database seeds.
      *
      * @return void
+     * @param string
      */
+    public function info($tableName)
+    {
+        $this->command->info("Таблица " . $tableName . " заполненна данными!");
+    }
+
     public function run()
     {
         $this->call(ServiceSeeder::class);
-        $this->command->info('Таблица services заполненна данными!');
+        $this->info('services');
         $this->call(StockSeeder::class);
-        $this->command->info('Таблица stock заполненна данными!');
+        $this->info('stocks');
+        $this->call(BlogSeeder::class);
+        $this->info('blog');
+        $this->call(ImageSeeder::class);
+        $this->info('images');
     }
 }
 
-class ServiceSeeder extends Seeder
-{
-    public function run()
-    {
-        DB::table('services')->delete();
-        factory('St\Models\Service', 8)->create();
-    }
-}
 
-class StockSeeder extends Seeder
-{
-    public function run()
-    {
-        DB::table('stocks')->delete();
-        factory('St\Models\Stock', 2)->create();
-    }
-}

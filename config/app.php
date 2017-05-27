@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -168,6 +168,8 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
 
+        // LaravelRus Carbon Modifier
+        'Laravelrus\LocalizedCarbon\LocalizedCarbonServiceProvider',
         /*
          * Application Service Providers...
          */
@@ -176,6 +178,7 @@ return [
         // St\Providers\BroadcastServiceProvider::class,
         St\Providers\EventServiceProvider::class,
         St\Providers\RouteServiceProvider::class,
+
 
     ],
 
@@ -225,7 +228,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        // LaravelRus Carbon Modifier
+        'LocalizedCarbon'   => 'Laravelrus\LocalizedCarbon\LocalizedCarbon',
+        'DiffFormatter'     => 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
     ],
 
 ];

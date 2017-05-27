@@ -54,54 +54,14 @@
             <!-- logo -->
             <div class="navbar-brand">
                 <a href="index.html">
-                    <img src="images/logo.png" alt="">
+                    <img src="{{asset('images/logo.png')}}" alt="">
                 </a>
             </div>
             <!-- /logo -->
         </div>
         <!-- main menu -->
-        <nav class="collapse navbar-collapse navbar-right" role="navigation">
-            <div class="main-menu">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="{{ route('home') }}">Главная</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Сервис
-                            <span class="caret"></span>
-                        </a>
-                        <div class="dropdown-menu">
-                            <ul>
-                                <li><a href="#">Some article</a></li>
-                                <li><a href="#">Some article</a></li>
-                                <li><a href="#">Some article</a></li>
-                                <li><a href="#">Some article</a></li>
-                                <li><a href="#">Some article</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Тюнинг
-                            <span class="caret"></span>
-                        </a>
-                        <div class="dropdown-menu">
-                            <ul>
-                                <li><a href="#">Some article</a></li>
-                                <li><a href="#">Some article</a></li>
-                                <li><a href="#">Some article</a></li>
-                                <li><a href="#">Some article</a></li>
-                                <li><a href="#">Some article</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="blog-fullwidth.html">Блог</a></li>
-                    <li><a href="contact.html">Контакты</a></li>
-                </ul>
-            </div>
-        </nav>
-        <!-- /main nav -->
+    @include('layouts.sections.navigate')
+    <!-- /main nav -->
     </div>
 </header>
 {{-- Start Content section --}}

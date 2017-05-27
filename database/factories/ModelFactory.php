@@ -27,7 +27,7 @@ $factory->define(St\Models\User::class, function (Faker $faker) {
 
 $factory->define(St\Models\Service::class, function (Faker $faker) {
     return [
-        'title' => $faker->word,
+        'title' => $faker->title,
         'desc' => $faker->sentence(4),
         'text' => $faker->paragraph(),
         'img' => $faker->imageUrl(600, 500),
@@ -37,7 +37,27 @@ $factory->define(St\Models\Service::class, function (Faker $faker) {
 
 $factory->define(St\Models\Stock::class, function (Faker $faker) {
     return [
-        'title' => $faker->word,
+        'title' => $faker->title,
         'text' => $faker->paragraph()
+    ];
+});
+
+$factory->define(St\Models\Blog::class, function (Faker $faker) {
+    return [
+        'title' => $faker->title,
+        'desc' => $faker->paragraph(),
+        'img_main' => $faker->imageUrl(600, 500),
+        'text' => $faker->paragraph(),
+    ];
+});
+
+$factory->define(St\Models\Image::class, function (Faker $faker) {
+    return [
+        'title' => $faker->title,
+        'desc' => $faker->sentence(4),
+        'file_path' => $faker->imageUrl(300, 200),
+        'blog_id' => function () {
+            return factory(St\Models\Blog::class)->create()->id;
+        }
     ];
 });

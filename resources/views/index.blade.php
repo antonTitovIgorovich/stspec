@@ -30,10 +30,10 @@ Slider Section Start
                         <!-- /.slider -->
                         <a class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green"
                            data-wow-delay=".9s" href="#works" data-section="#works">Предоставляемые<br>услуги</a>
-                        @isset($stocks)
-                        <a class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green"
-                           data-wow-delay="1.2s" href="#stocks" data-section="#stocks">Акции</a>
-                        @endisset
+                        @if(count($stocks) !== 0)
+                            <a class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green"
+                               data-wow-delay="1.2s" href="#stocks" data-section="#stocks">Акции</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -89,46 +89,21 @@ Slider Section Start
                     sagittis lacus.
                 </p>
             </div>
-            <div class="row">
-                @foreach($services as $key => $article)
-                    <div class="col-sm-4 col-xs-12">
-                        <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms"
-                                data-wow-delay="{{ $key * 200 }}ms">
-                            <div class="img-wrapper">
-                                <img src="{{ $article->img }}" class="img-responsive" alt="{{ $article->title }}">
-                                <div class="overlay">
-                                    <div class="buttons">
-                                        <a target="_blank" href="single-portfolio.html">Детали</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <figcaption>
-                                <h4>
-                                    <a href="#">
-                                        {{ $article->title }}
-                                    </a>
-                                </h4>
-                                <p>
-                                    "{{ $article->desc }}"
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </div>
-                @endforeach
-            </div>
+            @include('layouts.sections.service_foreach')
         </div>
     </section> <!-- #works -->
     <!--
     ==================================================
     Stock Section Start
     ================================================== -->
-    @isset($stocks)
+    @if(count($stocks) !== 0)
         <section id="stocks" class="stocks">
             <div class="container">
                 <div class="section-heading">
                     <h1 class="title wow fadeInDown" data-wow-delay=".3s">Акции</h1>
                     <p class="wow fadeInDown" data-wow-delay=".5s">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed,<br> quasi dolores numquam dolor vero
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed,<br> quasi dolores numquam dolor
+                        vero
                         ex,
                         tempora commodi repellendus quod laborum.
                     </p>
@@ -152,7 +127,7 @@ Slider Section Start
                 @endforeach
             </div>
         </section><!-- /#stocks -->
-    @endisset
+    @endif
     <!--
     ==================================================
     Portfolio Section Start

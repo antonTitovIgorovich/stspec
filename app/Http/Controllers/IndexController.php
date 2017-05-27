@@ -2,17 +2,19 @@
 
 namespace St\Http\Controllers;
 
-use Illuminate\Http\Request;
-use St\Models\Service;
 use St\Models\Stock;
 
-class IndexController extends Controller
+class IndexController extends SiteController
 {
-    public function renderPage()
+    public function __construct()
     {
-        return view('index', [
-            'services' => Service::where('main_page', '1')->get(),
-            'stocks' => Stock::all()
-        ]);
+        parent::__construct();
+    }
+
+    public function index()
+    {
+        $this->setTemplate('index');
+        $this->addVars('stocks', Stock::all());
+        return $this->renderOutput();
     }
 }
