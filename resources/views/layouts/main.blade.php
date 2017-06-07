@@ -121,6 +121,7 @@
 <!-- slider js -->
 <script src="{{ asset('js/slider.js') }}"></script>
 <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
+<script src="{{ asset('js/comment-reply.js') }}"></script>
 <!-- template main js -->
 <script src="{{ asset('js/main.js') }}"></script>
 </body>

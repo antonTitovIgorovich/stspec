@@ -2,9 +2,7 @@
 
 namespace St\Http\Controllers;
 
-use Illuminate\Http\Request;
 use St\Models\Blog;
-use Carbon\Carbon;
 
 class BlogController extends SiteController
 {
@@ -17,8 +15,22 @@ class BlogController extends SiteController
 
     public function showPost($id)
     {
-        $this->setTemplate('single-post');
-        $this->addVars('content', Blog::find($id));
+        $content = Blog::find($id);
+        $images = $content->images;
+        $comments = $content->comments;
+        $commentsGroup = $comments->groupBy('parent_id');
+
+        $lazyComments = $comments->load('user');
+        foreach ($lazyComments as $comm) {
+            if (empty($comm->name)) {
+                $comm->name = isset($comm->user->name) ? $comm->user->name : 'Incognito';
+            }
+        }
+
+        $this->setTemplate('blog-post');
+        $this->addVars('content', $content);
+        $this->addVars('images', $images);
+        $this->addVars('commentsGroup', $commentsGroup);
         return $this->renderOutput();
     }
 }

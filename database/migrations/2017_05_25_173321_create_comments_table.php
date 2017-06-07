@@ -17,9 +17,8 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('email')->unique();
-            $table->string('photo')->nullable();
             $table->text('message');
-            $table->integer('parent_id')->nullable();
+            $table->integer('parent_id')->default(0);
 
             $table->integer('blog_id')->unsigned();
             $table->foreign('blog_id')->references('id')->on('blog');
