@@ -75,39 +75,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="comments">
-                        @foreach($commentsGroup as $key => $comments)
-                            @if($key !== 0 )
-                                {{--If the comment is responding--}}
-                                @break
-                            @endif
-                            @include('layouts.sections.comment', ['items' => $comments])
-                        @endforeach
-                    </div>
-                    <div class="post-comment">
-                        <h3>Оставить комментарий</h3>
-                        <form role="form" class="form-horizontal">
-                            @if(!Auth::check())
-                                <div class="form-group">
-                                    <div class="col-lg-6">
-                                        <input type="text" class="col-lg-12 form-control" placeholder="Имя">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <input type="text" class="col-lg-12 form-control" placeholder="Email">
-                                    </div>
-                                </div>
-                            @endif
-                            <div class="form-group">
-                                <div class="col-lg-12">
-                                    <textarea class=" form-control" rows="8" placeholder="Сообщение"></textarea>
-                                </div>
-                            </div>
-                            <p>
-                                <button class="btn btn-send" type="submit">Отправить</button>
-                            </p>
-                                <input id="comment_post_id" type="hidden"
-                                       name="comment_post_id" value="{{ $content->id }}">
-                                <input id="comment_parent" type="hidden" name="comment_parent" value="">
-                        </form>
+                        @include('layouts.sections.disqus')
                     </div>
                 </div>
             </div>
