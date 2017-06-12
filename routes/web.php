@@ -1,10 +1,18 @@
 <?php
 
-Route::get('/', 'IndexController@index')->name('home');
+Route::get('/', 'IndexController@index')->name('index');
+
+Route::get('error404', 'IndexController@httpErr404')->name('404');
 
 Route::get('service/article-{id}', 'ServiceController@showArticle')->name('serviceArticle');
 
-Route::get('blog', 'BlogController@index')->name('blog');
-Route::get('blog/post-{id}', 'BlogController@showPost')->name('blogPost');
+Route::group(['prefix' => 'blog'], function () {
+    $this::get('/', 'BlogController@index')->name('blog');
+    $this::get('post-{id}', 'BlogController@showPost')->name('blogPost');
+});
 
 Route::get('contact', 'ContactController@index')->name('contact');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

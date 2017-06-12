@@ -15,22 +15,8 @@ class BlogController extends SiteController
 
     public function showPost($id)
     {
-        $content = Blog::find($id);
-        $images = $content->images;
-        $comments = $content->comments;
-        $commentsGroup = $comments->groupBy('parent_id');
-
-        $lazyComments = $comments->load('user');
-        foreach ($lazyComments as $comm) {
-            if (empty($comm->name)) {
-                $comm->name = isset($comm->user->name) ? $comm->user->name : 'Incognito';
-            }
-        }
-
         $this->setTemplate('blog-post');
-        $this->addVars('content', $content);
-        $this->addVars('images', $images);
-        $this->addVars('commentsGroup', $commentsGroup);
+        $this->addVars('content', Blog::find($id));
         return $this->renderOutput();
     }
 }

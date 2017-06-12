@@ -14,9 +14,4 @@ class Blog extends Model
         return $this->hasMany('St\Models\Image');
     }
 
-    public function comments()
-    {
-        return $this->hasMany('St\Models\Comment');
-    }
-
 }

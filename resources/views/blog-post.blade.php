@@ -28,10 +28,10 @@
                     <div class="post-content">
                         {{ $content->text }}
                     </div>
-                    @if(count($images) !== 0)
+                    @if(count($content->images) !== 0)
                         <div class="images">
                             <ul>
-                                @foreach($images as $image)
+                                @foreach($content->images as $image)
                                     <li>
                                         @isset($image->title)
                                         <h4>{{ $image->title }}</h4>

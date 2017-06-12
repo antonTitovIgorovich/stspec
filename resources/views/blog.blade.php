@@ -12,7 +12,7 @@
                         <h2>Блог</h2>
                         <ol class="breadcrumb">
                             <li>
-                                <a href="{{ route('home') }}">
+                                <a href="{{ route('index') }}">
                                     <i class="ion-ios-home"></i>
                                     Главная
                                 </a>

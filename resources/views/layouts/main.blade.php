@@ -108,7 +108,6 @@
 <!-- Template Javascript Files
     ================================================== -->
 <!-- modernizr js -->
-<script id="dsq-count-scr" src="//stspec.disqus.com/count.js" async></script>
 <script src="{{ asset('js/vendor/modernizr-2.6.2.min.js') }}"></script>
 <!-- jquery -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -122,8 +121,6 @@
 <!-- slider js -->
 <script src="{{ asset('js/slider.js') }}"></script>
 <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
-<script src="{{ asset('js/comment-reply.js') }}"></script>
-<script src="{{ asset('js/commentAjax.js') }}"></script>
 <!-- template main js -->
 <script src="{{ asset('js/main.js') }}"></script>
 </body>

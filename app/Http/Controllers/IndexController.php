@@ -17,4 +17,10 @@ class IndexController extends SiteController
         $this->addVars('stocks', Stock::all());
         return $this->renderOutput();
     }
+
+    public function httpErr404()
+    {
+        $this->setTemplate('404');
+        return $this->renderOutput();
+    }
 }
