@@ -229,8 +229,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         // LaravelRus Carbon Modifier
-        'LocalizedCarbon'   => 'Laravelrus\LocalizedCarbon\LocalizedCarbon',
-        'DiffFormatter'     => 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
+        'LocalizedCarbon' => 'Laravelrus\LocalizedCarbon\LocalizedCarbon',
+        'DiffFormatter' => 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
     ],
 
 ];

@@ -2,7 +2,7 @@
 
 Route::get('/', 'IndexController@index')->name('index');
 
-Route::get('error404', 'IndexController@httpErr404')->name('404');
+Route::get('error/{num}', 'IndexController@httpErr')->name('http_err');
 
 Route::get('service/article-{id}', 'ServiceController@showArticle')->name('serviceArticle');
 
@@ -13,6 +13,14 @@ Route::group(['prefix' => 'blog'], function () {
 
 Route::get('contact', 'ContactController@index')->name('contact');
 
-Auth::routes();
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login/auth', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function () {
+    $this::get('/', 'Admin\AdminController@index')->name('adminIndex');
+});
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
-                        <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s">404</h1>
+                        <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s">{{ $numberErr }}</h1>
                         <h2 class="wow fadeInUp animated" data-wow-delay=".6s">Opps! Имеем проблему.</h2>
                         <p class="wow fadeInUp animated" data-wow-delay=".9s">Страница, которую вы ищете, была
                             перемещена,

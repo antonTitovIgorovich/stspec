@@ -18,9 +18,10 @@ class IndexController extends SiteController
         return $this->renderOutput();
     }
 
-    public function httpErr404()
+    public function httpErr($num)
     {
-        $this->setTemplate('404');
+        $this->setTemplate('http_error');
+        $this->addVars('numberErr', $num);
         return $this->renderOutput();
     }
 }
