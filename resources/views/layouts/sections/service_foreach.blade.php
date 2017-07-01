@@ -8,7 +8,7 @@
                     <img src="{{ $article->img }}" class="img-responsive" alt="{{ $article->title }}">
                     <div class="overlay">
                         <div class="buttons">
-                            <a target="_blank" href="{{ route('serviceArticle', $article->id) }}">Детали</a>
+                            <a href="{{ route('serviceArticle', $article->id) }}">Детали</a>
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ class BlogController extends SiteController
         return $this->renderOutput();
     }
 
-    public function showPost($id)
+    public function show($id)
     {
         $this->setTemplate('blog-post');
         $this->addVars('content', Blog::find($id));
