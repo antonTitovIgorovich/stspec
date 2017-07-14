@@ -10,6 +10,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Mobile Specific Metas
     ================================================== -->
     <meta name="format-detection" content="telephone=no">
@@ -21,14 +22,6 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- Ionicons Fonts Css -->
     <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
-    <!-- animate css -->
-{{--<link rel="stylesheet" href="{{ asset('css/animate.css') }}">--}}
-<!-- Hero area slider css-->
-{{--<link rel="stylesheet" href="{{ asset('css/slider.css') }}">--}}
-<!-- owl craousel css -->
-{{--    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">--}}
-{{--    <link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}">--}}
-{{--    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.css') }}">--}}
 <!-- template main css file -->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
@@ -51,7 +44,6 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- /responsive nav button -->
-
             <!-- logo -->
             <div class="navbar-brand">
                 <a href="index.html">
@@ -108,38 +100,15 @@
         </div>
     </div>
 </footer> <!-- /#footer -->
-<!-- Template Javascript Files
-    ================================================== -->
+<!-- Template Javascript Files ================================================== -->
 <!-- modernizr js -->
 <script src="{{ asset('js/vendor/modernizr-2.6.2.min.js') }}"></script>
 <!-- jquery -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
-<!-- owl carouserl js -->
-{{--<script src="{{ asset('js/owl.carousel.min.js') }}"></script>--}}
-<!-- bootstrap js -->
 <script src="{{ asset('packages/ckeditor/ckeditor.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-filestyle.js') }}"></script>
-<script>
-    $(":file").filestyle(
-        {
-            buttonText: "Выбрать",
-            icon: false,
-            buttonName: "btn-primary",
-            buttonBefore: true
-        }
-    );
-    CKEDITOR.replace('editor', {
-        language: 'ru'
-    });
-</script>
-
-<!-- wow js -->
-{{--<script src="{{ asset('js/wow.min.js') }}"></script>--}}
-<!-- slider js -->
-{{--<script src="{{ asset('js/slider.js') }}"></script>--}}
-{{--<script src="{{ asset('js/jquery.fancybox.js') }}"></script>--}}
-<!-- template main js -->
-{{--<script src="{{ asset('js/main.js') }}"></script>--}}
+<script src="{{ asset('js/admin-dialog.js') }}"></script>
+<script src="{{ asset('js/admin.js') }}"></script>
 </body>
 </html>

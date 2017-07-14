@@ -89,7 +89,7 @@ Slider Section Start
                     sagittis lacus.
                 </p>
             </div>
-            @include('layouts.sections.service_foreach')
+            @include('layouts.service_cards')
         </div>
     </section> <!-- #works -->
     <!--

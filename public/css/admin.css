@@ -1,8 +1,28 @@
-.content-wrap{
+.list-container{
     margin-top: 120px;
+}
+
+.edit-page-container{
+    margin-top: 60px;
 }
 
 .col-centered{
     float: none;
     margin: 0 auto;
+}
+
+.title-center{
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.btn-add-article{
+    margin: 20px 0;
+}
+
+.img-small{
+    display: block;
+    width: 20%;
+    height: 20%;
 }

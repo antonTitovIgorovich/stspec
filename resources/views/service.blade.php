@@ -24,7 +24,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="portfolio-single-img">
-                        <img class="img-responsive" alt="{{ $content->title }}" src="{{ $content->img }}">
+                        <img class="img-responsive" src="{{ asset('storage/services') . "/" . $content->img  }}"
+                             alt="{{ $content->title }}">
                     </div>
                     <div class="portfolio-content">
                         <p>{!! $content->text !!}</p>
@@ -43,7 +44,7 @@
                 est. Aenean posuere <br> tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor
                 sagittis lacus.
             </p>
-            @include('layouts.sections.service_foreach')
+            @include('layouts.service_cards')
         </div>
     </section>
 

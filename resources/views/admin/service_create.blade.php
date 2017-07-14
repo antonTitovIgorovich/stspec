@@ -1,22 +1,9 @@
 @extends('admin.layouts.main')
 @section('content')
-    <div class="container">
+    <div class="container list-container">
         <div class="row">
             <div class="col-md-12">
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                @include('admin.layouts.response_info_status')
                 <form action="{{ route('service.store') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">

@@ -89,7 +89,7 @@ return [
     | the language folders that are provided through your application.
     |
     */
-    
+
     'fallback_locale' => 'en',
 
     /*
@@ -168,8 +168,16 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
 
-        // LaravelRus Carbon Modifier
+        /*
+         * LaravelRus Carbon Modifier
+         */
         'Laravelrus\LocalizedCarbon\LocalizedCarbonServiceProvider',
+
+        /*
+         * Intervention-image
+         */
+        Intervention\Image\ImageServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -228,9 +236,15 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        // LaravelRus Carbon Modifier
+        /*
+         * LaravelRus Carbon Modifier
+         */
         'LocalizedCarbon' => 'Laravelrus\LocalizedCarbon\LocalizedCarbon',
         'DiffFormatter' => 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
+        /*
+         * Intervention-image
+         */
+        'Image' => Intervention\Image\Facades\Image::class
     ],
 
 ];

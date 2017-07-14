@@ -3,11 +3,21 @@
 namespace St\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use St\Http\Requests\StoreServiceArticle;
+use St\Http\Requests\UpdateServiceArticle;
 use St\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 use St\Models\Service;
 
 class AdminServiceController extends Controller
 {
+    private static $fileFolder = 'services/';
+
+    private static function getStoragePath(){
+        return Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,29 +42,32 @@ class AdminServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param  $request ;
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreServiceArticle $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'desc' => 'required|max:40',
-            'img' => 'required|image',
-            'text' => 'required'
-        ]);
-
         $service = new Service;
-        $items = ['title', 'desc', 'img', 'text'];
-        foreach ($items as $item) {
-            $service->{$item} = $request->{$item};
-        }
+        $service->title = $request->title;
+        $service->desc = $request->desc;
+        $service->text = $request->text;
+        $service->main_page = $request->main_page === 'on' ? 1 : null;
 
-        $service->save();
         if ($request->hasFile('img')) {
-            $request->file('img')->store('services');
+            $image = $request->img;
+            $fileName = time() . "-" . $image->getClientOriginalName();
+            $path = self::getStoragePath() . self::$fileFolder . $fileName;
+            $image = Image::make($image->getRealPath())
+                ->resize(600, 500)
+                ->save($path);
+
+            $service->img = $fileName;
         }
-        return back()->with('status', 'Запись добавленна!')->withInput();
+        $service->save();
+
+        return back()
+            ->with('status', 'Запись добавленна!')
+            ->withInput();
     }
 
     /**
@@ -65,7 +78,8 @@ class AdminServiceController extends Controller
      */
     public function show($id)
     {
-        echo $id;
+        $content = Service::find($id);
+        return view('admin.service_show', ['content' => $content]);
     }
 
     /**
@@ -76,19 +90,47 @@ class AdminServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $content = Service::find($id);
+        return view('admin.service_edit', ['content' => $content]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  St\Http\Requests\UpdateServiceArticle $request
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdateServiceArticle $request, $id)
     {
-        //
+        $service = Service::find($id);
+        $service->title = $request->title;
+        $service->desc = $request->desc;
+        $service->text = $request->text;
+        $service->main_page = $request->main_page === 'on' ? 1 : null;
+
+        if ($request->hasFile('img')) {
+            //add the new photo
+            $image = $request->img;
+            $fileName = time() . "-" . $image->getClientOriginalName();
+            $path = self::getStoragePath() . self::$fileFolder . $fileName;
+            Image::make($image->getRealPath())
+                ->resize(600, 500)
+                ->save($path);
+            $oldFileName = $service->img;
+            //update the database
+            $service->img = $fileName;
+            //delete the old photo
+            if (Storage::exists(self::$fileFolder . $oldFileName)) {
+                Storage::delete(self::$fileFolder . $oldFileName);
+            }
+
+        }
+        $service->save();
+
+        return back()
+            ->with('status', 'Запись обновленна!')
+            ->withInput();
     }
 
     /**
@@ -99,6 +141,14 @@ class AdminServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service = Service::find($id);
+        $image = $service->img;
+        if (Storage::exists(self::$fileFolder . $image)) {
+            Storage::delete(self::$fileFolder . $image);
+        }
+
+        $service->delete();
+
+        return response()->json(['id' => $id]);
     }
 }
