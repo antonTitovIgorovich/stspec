@@ -2,20 +2,19 @@
 
 namespace St\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\App;
 use St\Http\Requests\StoreServiceArticle;
 use St\Http\Requests\UpdateServiceArticle;
 use St\Http\Controllers\Controller;
-use Intervention\Image\Facades\Image;
 use St\Models\Service;
 
 class AdminServiceController extends Controller
 {
-    private static $fileFolder = 'services/';
-
-    private static function getStoragePath(){
-        return Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();
+    private static function getImageManager()
+    {
+        return App::make('ImageManager')
+            ->setInputName('img')
+            ->setFileFolder('services/');
     }
 
     /**
@@ -53,16 +52,9 @@ class AdminServiceController extends Controller
         $service->text = $request->text;
         $service->main_page = $request->main_page === 'on' ? 1 : null;
 
-        if ($request->hasFile('img')) {
-            $image = $request->img;
-            $fileName = time() . "-" . $image->getClientOriginalName();
-            $path = self::getStoragePath() . self::$fileFolder . $fileName;
-            $image = Image::make($image->getRealPath())
-                ->resize(600, 500)
-                ->save($path);
+        $imageName = self::getImageManager()->uploadImage($request);
+        $service->img = $imageName;
 
-            $service->img = $fileName;
-        }
         $service->save();
 
         return back()
@@ -109,23 +101,9 @@ class AdminServiceController extends Controller
         $service->text = $request->text;
         $service->main_page = $request->main_page === 'on' ? 1 : null;
 
-        if ($request->hasFile('img')) {
-            //add the new photo
-            $image = $request->img;
-            $fileName = time() . "-" . $image->getClientOriginalName();
-            $path = self::getStoragePath() . self::$fileFolder . $fileName;
-            Image::make($image->getRealPath())
-                ->resize(600, 500)
-                ->save($path);
-            $oldFileName = $service->img;
-            //update the database
-            $service->img = $fileName;
-            //delete the old photo
-            if (Storage::exists(self::$fileFolder . $oldFileName)) {
-                Storage::delete(self::$fileFolder . $oldFileName);
-            }
-
-        }
+        $newImageName = self::getImageManager()
+            ->updateImage($request, $service->img);
+        $service->img = $newImageName;
         $service->save();
 
         return back()
@@ -142,10 +120,8 @@ class AdminServiceController extends Controller
     public function destroy($id)
     {
         $service = Service::find($id);
-        $image = $service->img;
-        if (Storage::exists(self::$fileFolder . $image)) {
-            Storage::delete(self::$fileFolder . $image);
-        }
+
+        self::getImageManager()->removeImage($service->img);
 
         $service->delete();
 

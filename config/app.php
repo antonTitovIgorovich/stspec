@@ -186,6 +186,7 @@ return [
         // St\Providers\BroadcastServiceProvider::class,
         St\Providers\EventServiceProvider::class,
         St\Providers\RouteServiceProvider::class,
+        St\Providers\ImageManagerProvider::class
 
 
     ],
