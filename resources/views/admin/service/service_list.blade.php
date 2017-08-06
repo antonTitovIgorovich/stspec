@@ -1,9 +1,19 @@
 @extends('admin.layouts.main')
 @section('content')
-    <div class="container list-container">
+    <section class="global-page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h2>Сервис</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/#Page header-->
+    <div class="container mt50">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="title-center">Сервис</h1>
                 <table class="table table-hover">
                     <tr>
                         <th>Инд.</th>
@@ -18,7 +28,7 @@
                             <td>{{ $item->title }}</td>
                             <td>
                                 @if(!empty($item->desc))
-                                    <p>{{ $item->desc }}</p>
+                                    <p>{{ str_limit($item->desc, 50) }}</p>
                             @endif
                             <td>
                                 @if(isset($item->main_page))
@@ -34,7 +44,7 @@
                                    class="btn btn-success">
                                     <i class="ion-android-create"></i>
                                 </a>
-                                <a href="#" title="Delete" class="btn dialog-btn btn-danger"
+                                <a href="#" title="Delete" class="btn service-dialog-btn btn-danger"
                                    data-title="{{ $item->title }}"
                                    data-id="{{ $item->id }}"
                                    data-toggle="modal" data-target="#modal">
@@ -48,7 +58,7 @@
                     Добавить статью
                 </a>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-centered">
+            <div class="col-md-12 flex-centered">
                 {{ $content->render() }}
             </div>
         </div>

@@ -4,7 +4,7 @@ namespace St\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateServiceArticle extends FormRequest
+class UpdateBlogRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,9 @@ class UpdateServiceArticle extends FormRequest
         return [
             'title' => 'required|max:255',
             'desc' => 'required|max:255',
-            'img' => 'image',
+            'img_main' => 'image',
+            'images' => 'array',
+            'remove_imgs' => 'nullable|string',
             'text' => 'required'
         ];
     }

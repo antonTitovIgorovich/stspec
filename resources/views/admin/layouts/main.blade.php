@@ -22,9 +22,10 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- Ionicons Fonts Css -->
     <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
-<!-- template main css file -->
+    <!-- template main css file -->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/file-uploader/5.14.4/all.fine-uploader/fine-uploader-new.min.css">
     <!-- responsive css -->
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 </head>
@@ -46,8 +47,8 @@
             <!-- /responsive nav button -->
             <!-- logo -->
             <div class="navbar-brand">
-                <a href="index.html">
-                    <img src="{{asset('images/logo.png')}}" alt="">
+                <a href="{{ url('/') }}">
+                    <img src="{{asset('images/logo.png')}}" alt="st">
                 </a>
             </div>
             <!-- /logo -->
@@ -105,6 +106,7 @@
 <script src="{{ asset('js/vendor/modernizr-2.6.2.min.js') }}"></script>
 <!-- jquery -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/file-uploader/5.14.4/all.fine-uploader/all.fine-uploader.core.js"></script>
 <script src="{{ asset('packages/ckeditor/ckeditor.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-filestyle.js') }}"></script>

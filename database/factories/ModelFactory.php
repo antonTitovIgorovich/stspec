@@ -53,9 +53,7 @@ $factory->define(St\Models\Blog::class, function (Faker $faker) {
 
 $factory->define(St\Models\Image::class, function (Faker $faker) {
     return [
-        'title' => $faker->title,
-        'desc' => $faker->sentence(4),
-        'file_path' => $faker->imageUrl(300, 200),
+        'file_name' => $faker->imageUrl(300, 200),
         'blog_id' => function () {
             return factory(St\Models\Blog::class)->create()->id;
         }

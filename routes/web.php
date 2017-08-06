@@ -13,12 +13,14 @@ Route::group(['prefix' => 'blog'], function () {
 
 Route::get('contact', 'ContactController@index')->name('contact');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['web','auth']], function () {
     $this::get('/', function () {
         return redirect()->route('service.index');
     });
 
     $this::resource('service', 'Admin\AdminServiceController');
+    $this::resource('blog', 'Admin\AdminBlogController');
+    $this::resource('stock', 'Admin\AdminStockController');
 });
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

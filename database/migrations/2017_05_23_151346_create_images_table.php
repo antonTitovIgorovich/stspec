@@ -15,13 +15,9 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->nullable();;
-            $table->text('desc')->nullable();
-            $table->string('file_path');
-
+            $table->string('file_name');
             $table->integer('blog_id')->unsigned();
             $table->foreign('blog_id')->references('id')->on('blog');
-
             $table->timestamps();
         });
     }

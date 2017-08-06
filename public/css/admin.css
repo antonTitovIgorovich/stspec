@@ -1,28 +1,36 @@
-.list-container{
+.mt120 {
     margin-top: 120px;
 }
 
-.edit-page-container{
-    margin-top: 60px;
+.mt50 {
+    margin-top: 50px;
 }
 
-.col-centered{
-    float: none;
-    margin: 0 auto;
+.mt8 {
+    margin-top: 8px;
 }
 
-.title-center{
+.red-color {
+    color: #e74c3c !important;
+}
+
+.blue-color {
+    color: #3498db !important;
+}
+
+.flex-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-center {
     display: block;
     text-align: center;
     margin: 20px 0;
 }
 
-.btn-add-article{
+.btn-add-article {
     margin: 20px 0;
 }
 
-.img-small{
-    display: block;
-    width: 20%;
-    height: 20%;
-}

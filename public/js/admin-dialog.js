@@ -25,6 +25,7 @@ function AdminDialogExecutor() {
         $(this.startBtn).click(function (e) {
             e.preventDefault();
             var data = $(this).data();
+            
             manipulator.fillTitle(data);
             manipulator.setHrefFromLink(data, defaultUri);
         })

@@ -14,7 +14,7 @@ class AdminServiceController extends Controller
     {
         return App::make('ImageManager')
             ->setInputName('img')
-            ->setFileFolder('services/');
+            ->setDestinationFolder('services');
     }
 
     /**
@@ -24,8 +24,8 @@ class AdminServiceController extends Controller
      */
     public function index()
     {
-        $content = Service::orderBy('id', 'desc')->paginate(4);
-        return view('admin.service_list', ['content' => $content]);
+        $content = Service::orderBy('id', 'desc')->paginate(8);
+        return view('admin.service.service_list', ['content' => $content]);
     }
 
     /**
@@ -35,7 +35,7 @@ class AdminServiceController extends Controller
      */
     public function create()
     {
-        return view('admin.service_create');
+        return view('admin.service.service_create');
     }
 
     /**
@@ -52,8 +52,11 @@ class AdminServiceController extends Controller
         $service->text = $request->text;
         $service->main_page = $request->main_page === 'on' ? 1 : null;
 
-        $imageName = self::getImageManager()->uploadImage($request);
-        $service->img = $imageName;
+        self::getImageManager()
+            ->uploadImage($request,
+                function ($imageName) use ($service) {
+                    $service->img = $imageName;
+                });
 
         $service->save();
 
@@ -71,7 +74,7 @@ class AdminServiceController extends Controller
     public function show($id)
     {
         $content = Service::find($id);
-        return view('admin.service_show', ['content' => $content]);
+        return view('admin.service.service_show', ['content' => $content]);
     }
 
     /**
@@ -83,7 +86,7 @@ class AdminServiceController extends Controller
     public function edit($id)
     {
         $content = Service::find($id);
-        return view('admin.service_edit', ['content' => $content]);
+        return view('admin.service.service_edit', ['content' => $content]);
     }
 
     /**
@@ -101,9 +104,12 @@ class AdminServiceController extends Controller
         $service->text = $request->text;
         $service->main_page = $request->main_page === 'on' ? 1 : null;
 
-        $newImageName = self::getImageManager()
-            ->updateImage($request, $service->img);
-        $service->img = $newImageName;
+        self::getImageManager()
+            ->updateImage($request, $service->img,
+                function ($newImage) use ($service) {
+                    $service->img = $newImage;
+                });
+
         $service->save();
 
         return back()

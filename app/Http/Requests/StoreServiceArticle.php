@@ -25,7 +25,7 @@ class StoreServiceArticle extends FormRequest
     {
         return [
             'title' => 'required|max:255',
-            'desc' => 'required|max:40',
+            'desc' => 'required|max:255',
             'img' => 'required|image',
             'text' => 'required'
         ];

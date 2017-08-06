@@ -84,7 +84,8 @@ Slider Section Start
                 <p class="wow fadeInDown" data-wow-delay=".5s">
                     Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit
                     amet
-                    est. Aenean posuere <br> tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna
+                    est. Aenean posuere <br> tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin
+                    urna
                     dolor
                     sagittis lacus.
                 </p>
@@ -120,7 +121,7 @@ Slider Section Start
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">{{ $stock->title }}</h4>
-                                <p>{{ $stock->text }}</p>
+                                {!! $stock->text !!}
                             </div>
                         </div>
                     </div>

@@ -28,9 +28,8 @@
                              alt="{{ $content->title }}">
                     </div>
                     <div class="portfolio-content">
-                        <p>{!! $content->text !!}</p>
+                        {!! $content->text !!}
                     </div>
-
                 </div>
             </div>
         </div>

@@ -12,4 +12,6 @@ interface ImageManagerContract
     function setFileFolder(string $fileFolder);
     function setInputName(string $name);
     function uploadImage(Request $request);
+    public function updateImage(Request $request, $oldFileName);
+    function removeImage($fileName);
 }

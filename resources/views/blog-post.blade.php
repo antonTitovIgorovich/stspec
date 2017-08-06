@@ -23,23 +23,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="post-img">
-                        <img class="img-responsive" alt="{{ $content->title }}" src="{{ $content->img_main }}">
+                        <img class="img-responsive" alt="{{ $content->title }}"
+                             src="{{ asset('storage/blog/img_main') . "/" .  $content->img_main }}">
                     </div>
                     <div class="post-content">
-                        {{ $content->text }}
+                        {!! $content->text !!}
                     </div>
-                    @if(count($content->images) !== 0)
+                    @if(count($content->images) > 0)
                         <div class="images">
                             <ul>
                                 @foreach($content->images as $image)
                                     <li>
-                                        @isset($image->title)
-                                        <h4>{{ $image->title }}</h4>
-                                        @endisset
-                                        @isset($image->title)
-                                        <p>{{ $image->desc }}</p>
-                                        @endisset
-                                        <img src="{{ $image->file_path }}" alt="{{ $image->title }}">
+                                        <img src="{{ asset('storage/blog/gallery') . "/" . $image->file_name }}"
+                                             alt="{{ $image->title }}">
                                     </li>
                                 @endforeach
                             </ul>

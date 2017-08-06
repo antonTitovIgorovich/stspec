@@ -5,16 +5,44 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="block">
-                        <h2>Редактированние "{{ $content->title }}"</h2>
+                        <h2>Редактированние <br> "{{ $content->title }}"</h2>
                     </div>
                 </div>
             </div>
         </div>
     </section><!--/#Page header-->
-    <div class="container edit-page-container">
+    <div class="container mt50">
         <div class="row">
             <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ route('service.index') }}">Сервис</a></li>
+                    <li class="active">{{ $content->title }}</li>
+                </ol>
                 @include('admin.layouts.response_info_status')
+            </div>
+            <div class="col-md-4 co-sm-4">
+                <img class="img-responsive thumbnail"
+                     src="{{ asset('storage/services') . "/" . $content->img  }}"
+                     alt="{{ $content->title }}">
+            </div>
+            <div class="col-md-8 xol-sm-8">
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">Инд. номер: {{ $content->id }}</h4>
+                    </div>
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">Запись созданна:</h4>
+                        <p class="list-group-item-text">{{ $content->created_at }}</p>
+                    </div>
+                    @if($content->created_at <> $content->updated_at)
+                        <div class="list-group-item">
+                            <h4 class="list-group-item-heading">Последние редактирование:</h4>
+                            <p class="list-group-item-text">{{ $content->updated_at }}</p>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-12">
                 <form action="{{ route('service.update', ['id'=>$content->id]) }}" method="post"
                       enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -22,19 +50,15 @@
                     <div class="form-group">
                         <label for="title">Заголовок:</label>
                         <input type="text" name="title" value="{{ $content->title }}" class="form-control" id="title"
-                               placeholder="Заголовок"
-                        >
+                               placeholder="Заголовок" maxlength="255">
                     </div>
                     <div class="form-group">
                         <label for="desc">Краткое описание:</label>
                         <input type="text" name="desc" value="{{ $content->desc }}" class="form-control" id="desc"
-                               placeholder="Максимум 40 символов" maxlength="40"
+                               placeholder="Краткое описание" maxlength="255"
                         >
                     </div>
                     <div class="form-group">
-                        <img class="img-responsive img-small"
-                             src="{{ asset('storage/services') . "/" . $content->img  }}"
-                             alt="{{ $content->title }}">
                         <label for="upload">Выбрать новое изображение:</label>
                         <input id="upload" type="file" name="img" accept="image/*" class="file">
                     </div>

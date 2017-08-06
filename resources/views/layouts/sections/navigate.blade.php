@@ -2,7 +2,7 @@
     <div class="main-menu">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="{{ route('indexPage') }}">Главная</a>
+                <a  href="{{ route('indexPage') }}">Главная</a>
             </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
