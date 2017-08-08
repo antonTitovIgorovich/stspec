@@ -3,6 +3,7 @@
 namespace St\Http\Controllers;
 
 use St\Models\Stock;
+use SEO;
 
 class IndexController extends SiteController
 {

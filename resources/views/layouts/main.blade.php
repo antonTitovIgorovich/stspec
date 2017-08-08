@@ -5,11 +5,15 @@
     ================================================== -->
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
-    <title>Timer Agency Template</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+    <!-- SEO
+    ================================================== -->
+    {!! SEO::generate() !!}
+<!-- Favicon
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
+    <link rel="mask-icon" href="{{ asset('images/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <!-- Mobile Specific Metas
     ================================================== -->
     <meta name="format-detection" content="telephone=no">
@@ -53,9 +57,11 @@
 
             <!-- logo -->
             <div class="navbar-brand">
-                <a href="{{ url('/') }}">
-                    <img src="{{asset('images/logo.png')}}" alt="st">
-                </a>
+                <div class="mainLogo">
+                    <a href="{{ url('/') }}">
+                        @include('layouts.logo.main_logo')
+                    </a>
+                </div>
             </div>
             <!-- /logo -->
         </div>

@@ -177,7 +177,10 @@ return [
          * Intervention-image
          */
         Intervention\Image\ImageServiceProvider::class,
-
+        /*
+         * SEO
+         */
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -245,7 +248,11 @@ return [
         /*
          * Intervention-image
          */
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        /*
+         * SEO
+         */
+         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class
     ],
 
 ];
