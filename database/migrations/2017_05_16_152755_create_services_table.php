@@ -17,6 +17,7 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('desc');
+            $table->string('keywords');
             $table->text('text');
             $table->string('img');
             $table->boolean('main_page')->nullable();

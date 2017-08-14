@@ -14,20 +14,19 @@
     color: #e74c3c !important;
 }
 
-.blue-color {
-    color: #3498db !important;
-}
-
-.flex-centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.green-color {
+    color: green !important;
 }
 
 .title-center {
     display: block;
     text-align: center;
     margin: 20px 0;
+}
+
+.btn-collapse {
+    display: block;
+    margin: 10px 0;
 }
 
 .btn-add-article {

@@ -26,6 +26,7 @@ class StoreBlogRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'desc' => 'required|max:255',
+            'keywords' => 'required|max:255|regex:/^([0-9a-zа-я][^\s]+)([,][^\s][0-9a-zа-я]+)*$/i',
             'img_main' => 'required|image',
             'images' => 'array',
             'text' => 'required'

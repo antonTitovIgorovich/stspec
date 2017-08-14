@@ -178,10 +178,6 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
         /*
-         * SEO
-         */
-        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        /*
          * Application Service Providers...
          */
         St\Providers\AppServiceProvider::class,
@@ -189,8 +185,10 @@ return [
         // St\Providers\BroadcastServiceProvider::class,
         St\Providers\EventServiceProvider::class,
         St\Providers\RouteServiceProvider::class,
-        St\Providers\ImageManagerProvider::class
-
+        /*
+         * My custom providers.
+         */
+        St\Providers\ImageManagerProvider::class,
 
     ],
 
@@ -249,10 +247,6 @@ return [
          * Intervention-image
          */
         'Image' => Intervention\Image\Facades\Image::class,
-        /*
-         * SEO
-         */
-         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class
     ],
 
 ];

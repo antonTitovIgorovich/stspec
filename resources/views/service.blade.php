@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('seo')
+    @include('layouts.seo.service_seo')
+@endsection
 @section('content')
     <!--
     ==================================================
@@ -11,8 +14,17 @@
                     <div class="block">
                         <h2>{{ $content->title }}</h2>
                         <div class="portfolio-meta">
-                            <span> Категория: Сервис</span>
+                            <span>Предоставляемый сервис от {{ env('APP_TITLE') }}</span>
                         </div>
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="{{ route('indexPage') }}">
+                                    <i class="ion-ios-home"></i>
+                                    Главная
+                                </a>
+                            </li>
+                            <li class="active">{{ $content->title }}</li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -44,29 +56,6 @@
                 sagittis lacus.
             </p>
             @include('layouts.service_cards')
-        </div>
-    </section>
-
-    <!--
-    ==================================================
-    Call To Action Section Start
-    ================================================== -->
-    <section id="call-to-action">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="block">
-                        <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="300ms">SO WHAT YOU
-                            THINK ?</h2>
-                        <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="300ms">Lorem ipsum dolor
-                            sit amet, consectetur adipisicing elit. Nobis,</br>possimus commodi, fugiat magnam
-                            temporibus vero magni recusandae? Dolore, maxime praesentium.</p>
-                        <a href="#" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s"
-                           data-wow-duration="300ms">Contact With Me</a>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </section>
     <!--

@@ -29,20 +29,35 @@
                                placeholder="Заголовок" maxlength="255"
                         >
                     </div>
+                    <hr>
                     <div class="form-group">
                         <label for="desc">Краткое описание:</label>
+                        @include('admin.layouts.sections.desc_seo_specification')
                         <input type="text" name="desc" value="{{ old('desc') }}" class="form-control" id="desc"
                                placeholder="Краткое описание" maxlength="255"
                         >
                     </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="keywords">Ключевые слова:</label>
+                        @include('admin.layouts.sections.keywords_seo_specification')
+                        <p>(Слова разделяюся запятыми без пробелов)</p>
+                        <input type="text" name="keywords" value="{{ old('keywords') }}"
+                               class="form-control" id="keywords"
+                               placeholder="слово 1,слово 2,слово 3..." maxlength="255"
+                        >
+                    </div>
+                    <hr>
                     <div class="form-group">
                         <label for="upload">Выбрать изображение:</label>
                         <input id="upload" type="file" name="img" accept="image/*" class="file">
                     </div>
+                    <hr>
                     <div class="form-group">
                         <label for="editor">Текст:</label>
                         <textarea name="text" id="editor">{{ old('text') }}</textarea>
                     </div>
+                    <hr>
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
@@ -52,6 +67,7 @@
                             </label>
                         </div>
                     </div>
+                    <hr>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Отправить</button>
                     </div>

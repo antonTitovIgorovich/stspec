@@ -2,14 +2,21 @@
 
 namespace St\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\App;
-use St\Http\Requests\StoreServiceArticle;
-use St\Http\Requests\UpdateServiceArticle;
 use St\Http\Controllers\Controller;
 use St\Models\Service;
+use App;
+use St\Http\Requests\{
+    StoreServiceArticle, UpdateServiceArticle
+};
 
 class AdminServiceController extends Controller
 {
+    /**
+     * Get class ImageManager with settings.
+     *
+     * @return \St\App\Http\Helpers\ImageManager;
+     */
+
     private static function getImageManager()
     {
         return App::make('ImageManager')
@@ -49,6 +56,7 @@ class AdminServiceController extends Controller
         $service = new Service;
         $service->title = $request->title;
         $service->desc = $request->desc;
+        $service->keywords = $request->keywords;
         $service->text = $request->text;
         $service->main_page = $request->main_page === 'on' ? 1 : null;
 
@@ -92,7 +100,7 @@ class AdminServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  St\Http\Requests\UpdateServiceArticle $request
+     * @param  \St\Http\Requests\UpdateServiceArticle $request
      * @param  int $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -101,11 +109,13 @@ class AdminServiceController extends Controller
         $service = Service::find($id);
         $service->title = $request->title;
         $service->desc = $request->desc;
+        $service->keywords = $request->keywords;
         $service->text = $request->text;
         $service->main_page = $request->main_page === 'on' ? 1 : null;
 
+        $oldImageName = $service->img;
         self::getImageManager()
-            ->updateImage($request, $service->img,
+            ->updateImage($request, $oldImageName,
                 function ($newImage) use ($service) {
                     $service->img = $newImage;
                 });

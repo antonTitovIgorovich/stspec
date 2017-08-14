@@ -6,11 +6,12 @@ use St\Models\Blog;
 
 class BlogController extends SiteController
 {
+
     public function index()
     {
+        $posts = Blog::orderBy('id', 'desc')->paginate(5);
         $this->setTemplate('blog');
-        $this->addVars('title', 'Блог');
-        $this->addVars('posts', Blog::all());
+        $this->addVars('posts', $posts);
         return $this->renderOutput();
     }
 
@@ -18,7 +19,6 @@ class BlogController extends SiteController
     {
         $content = Blog::find($id);
         $this->setTemplate('blog-post');
-        $this->addVars('title', $content->title);
         $this->addVars('content', $content);
         return $this->renderOutput();
     }

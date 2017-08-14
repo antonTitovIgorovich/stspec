@@ -3,8 +3,10 @@
 namespace St\Exceptions;
 
 use Exception;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use St\Models\Service;
 
 class Handler extends ExceptionHandler
 {
@@ -44,19 +46,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        $redirect = function ($num){
-           return redirect()->route('http_err', ['num' => $num]);
-        };
-//        if ($this->isHttpException($exception)) {
-//            switch ($exception->getStatusCode()) {
-//                case '404':
-//                    return $redirect('404');
-//                    break;
-//                case '500':
-//                    return $redirect('500');
-//                    break;
-//            }
-//        }
+        if ($exception instanceof NotFoundHttpException) {
+            $services = Service::all();
+            return response()->view('errors.404', compact('services'));
+        }
 
         return parent::render($request, $exception);
     }

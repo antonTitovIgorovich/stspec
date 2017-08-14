@@ -9,13 +9,13 @@
                          alt="{{ $article->title }}">
                     <div class="overlay">
                         <div class="buttons">
-                            <a href="{{ route('serviceArticle', $article->id) }}">Детали</a>
+                            <a href="{{ route('serviceArticle', $article->id) }}" title="{{ $article->title }}">Детали</a>
                         </div>
                     </div>
                 </div>
                 <figcaption>
                     <h4>
-                        <a href="{{ route('serviceArticle', $article->id) }}">
+                        <a href="{{ route('serviceArticle', $article->id) }}" title="{{ $article->title }}">
                             {{ $article->title }}
                         </a>
                     </h4>

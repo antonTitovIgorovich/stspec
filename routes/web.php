@@ -2,8 +2,6 @@
 
 Route::get('/', 'IndexController@index')->name('indexPage');
 
-Route::get('error/{num}', 'IndexController@httpErr')->name('http_err');
-
 Route::get('service/{id}', 'ServiceController@show')->name('serviceArticle');
 
 Route::group(['prefix' => 'blog'], function () {

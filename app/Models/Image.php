@@ -16,14 +16,15 @@ class Image extends Model
 
     public function scopeMultiInsert($query, int $blogId, array $NamesArr)
     {
-        $dataArr = array_map(function ($imgName) use ($blogId) {
-            return [
-                'file_name' => $imgName,
-                'blog_id' => $blogId,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ];
-        }, $NamesArr);
+        $dataArr = array_map(
+            function ($imgName) use ($blogId) {
+                return [
+                    'file_name' => $imgName,
+                    'blog_id' => $blogId,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ];
+            }, $NamesArr);
 
         return $query->insert($dataArr);
     }

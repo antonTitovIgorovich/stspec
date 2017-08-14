@@ -29,20 +29,36 @@
                                placeholder="Заголовок" maxlength="255"
                         >
                     </div>
+                    <hr>
                     <div class="form-group">
                         <label for="desc">Краткое описание:</label>
+                        @include('admin.layouts.sections.desc_seo_specification')
                         <input type="text" name="desc" value="{{ old('desc') }}" class="form-control" id="desc"
                                placeholder="Краткое описание" maxlength="255"
                         >
                     </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="keywords">Ключевые слова:</label>
+                        @include('admin.layouts.sections.keywords_seo_specification')
+                        <p>(Слова разделяюся запятыми без пробелов)</p>
+                        <input type="text" name="keywords" value="{{ old('keywords') }}"
+                               class="form-control" id="keywords"
+                               placeholder="слово 1,слово 2,слово 3..." maxlength="255"
+                        >
+                    </div>
+                    <hr>
                     <div class="form-group">
                         <label for="upload">Выбрать основное изображение:</label>
                         <input id="upload" type="file" name="img_main" accept="image/*" class="file">
                     </div>
                     <div class="form-group">
-                        <label for="uploads">Выбрать изображения для галлереи:</label>
+                        <label for="uploads">Выбрать изображения для галлереи:
+                        </label>
+                        <p>(Изображений может быть несколько)</p>
                         <input id="uploads" type="file" name="gallery_imgs[]" accept="image/*" class="file" multiple>
                     </div>
+                    <hr>
                     <div class="form-group">
                         <label for="editor">Текст:</label>
                         <textarea name="text" id="editor">{{ old('text') }}</textarea>

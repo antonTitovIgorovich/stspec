@@ -2,18 +2,25 @@
 
 namespace St\Http\Controllers\Admin;
 
-use St\Helpers\ImageManager;
+use St\Http\Controllers\Controller;
+use App;
 use St\Http\Requests\{
     StoreBlogRequest, UpdateBlogRequest
 };
-use St\Http\Controllers\Controller;
 use St\Models\{
     Blog, Image
 };
-use App;
 
 class AdminBlogController extends Controller
 {
+    /**
+     * Get class ImageManager with settings.
+     *
+     * @param string $inputName ;
+     * @param string $subFolder ;
+     * @return \St\App\Http\Helpers\ImageManager;
+     */
+
     private static function getImageManager(string $inputName, string $subFolder)
     {
         return App::make('ImageManager')
@@ -45,14 +52,15 @@ class AdminBlogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  St\Http\Requests\StoreBlogRequest $request
-     * @return \Illuminate\Http\Response
+     * @param  \St\Http\Requests\StoreBlogRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreBlogRequest $request)
     {
         $blogOrm = new Blog;
         $blogOrm->title = $request->title;
         $blogOrm->desc = $request->desc;
+        $blogOrm->keywords = $request->keywords;
         $blogOrm->text = $request->text;
 
         //Upload main image
@@ -104,36 +112,38 @@ class AdminBlogController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request\UpdateBlogRequest $request
+     * @param  \St\Http\Requests\UpdateBlogRequest $request
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateBlogRequest $request, $id)
     {
         $blogOrm = Blog::find($id);
         $blogOrm->title = $request->title;
         $blogOrm->desc = $request->desc;
+        $blogOrm->keywords = $request->keywords;
         $blogOrm->text = $request->text;
 
         // Update main image
+        $oldMainImgName = $blogOrm->img_main;
         self::getImageManager('img_main', 'img_main')
-            ->updateImage($request, $blogOrm->img_main, 
+            ->updateImage($request, $oldMainImgName,
                 function ($newName) use ($blogOrm) {
                     $blogOrm->img_main = $newName;
                 });
-        
 
-        // Update Blog-model
+
+        // Update Blog-model.
         $blogOrm->save();
 
-        // Remove images from the gallery
+        // Remove images from the gallery.
         self::getImageManager('remove_imgs', 'gallery')
-            ->multiRemoveImages($request, 
+            ->multiRemoveImages($request,
                 function ($removedImgsArr) {
                     Image::whereIn('file_name', $removedImgsArr)->delete();
                 });
 
-        // Upload images to the gallery
+        // Upload images to the gallery.
         self::getImageManager('gallery_imgs', 'gallery')
             ->multiUploadImages($request,
                 function ($galleryNamesArr) use ($blogOrm) {
@@ -155,10 +165,12 @@ class AdminBlogController extends Controller
     {
         $blog = Blog::find($id);
 
-        $imageManger = new ImageManager();
+        $imageManger = App::make('ImageManager');
 
-        //If there are images in the gallery, 
-        // then delete this images
+        /*
+         * If there are images in the gallery,
+         * then delete this images.
+         */
         if (count($blog->images) > 0) {
             $imageMangerGallery = $imageManger
                 ->setDestinationFolder('blog/gallery');

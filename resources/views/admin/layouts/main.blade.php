@@ -5,11 +5,12 @@
     ================================================== -->
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
+    <link rel="mask-icon" href="{{ asset('images/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
-    <title>Timer Agency Template</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+    <title>Админ</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Mobile Specific Metas
     ================================================== -->
@@ -23,9 +24,10 @@
     <!-- Ionicons Fonts Css -->
     <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
     <!-- template main css file -->
+    <!-- tosrus.css -->
+    <link rel="stylesheet" href="{{ asset('css/jquery.tosrus.all.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/file-uploader/5.14.4/all.fine-uploader/fine-uploader-new.min.css">
     <!-- responsive css -->
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 </head>
@@ -48,7 +50,7 @@
             <!-- logo -->
             <div class="navbar-brand">
                 <a href="{{ url('/') }}">
-                    <img src="{{asset('images/logo.png')}}" alt="st">
+                    @include('layouts.logo.main_logo')
                 </a>
             </div>
             <!-- /logo -->
@@ -68,46 +70,15 @@
 ==================================================
   Footer Section Start
 ================================================== -->
-<footer id="footer">
-    <div class="container">
-        <div class="col-md-8">
-            <p class="copyright">Copyright: <span>2015</span> . Design and Developed by <a
-                        href="http://www.Themefisher.com">Themefisher</a></p>
-        </div>
-        <div class="col-md-4">
-            <!-- Social Media -->
-            <ul class="social">
-                <li>
-                    <a href="http://wwww.fb.com/themefisher" class="Facebook">
-                        <i class="ion-social-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://wwww.twitter.com/themefisher" class="Twitter">
-                        <i class="ion-social-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="Linkedin">
-                        <i class="ion-social-linkedin"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://wwww.fb.com/themefisher" class="Google Plus">
-                        <i class="ion-social-googleplus"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</footer> <!-- /#footer -->
+@include('layouts.sections.footer')
 <!-- Template Javascript Files ================================================== -->
 <!-- modernizr js -->
 <script src="{{ asset('js/vendor/modernizr-2.6.2.min.js') }}"></script>
 <!-- jquery -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/file-uploader/5.14.4/all.fine-uploader/all.fine-uploader.core.js"></script>
+<script src="{{ asset('js/menu-item-active.js') }}"></script>
 <script src="{{ asset('packages/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('js/jquery.tosrus.all.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-filestyle.js') }}"></script>
 <script src="{{ asset('js/admin-dialog.js') }}"></script>

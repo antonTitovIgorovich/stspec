@@ -32,8 +32,8 @@ class AdminStockController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  St\Http\Requests\StockRequest $request
-     * @return \Illuminate\Http\Response
+     * @param  \St\Http\Requests\StockRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StockRequest $request)
     {
@@ -73,9 +73,9 @@ class AdminStockController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  St\Http\Requests\StockRequest $request
+     * @param  \St\Http\Requests\StockRequest $request
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(StockRequest $request, $id)
     {

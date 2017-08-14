@@ -9,6 +9,9 @@ h5,
 h6 {
   font-family: 'Roboto Condensed', sans-serif;
 }
+.mobile-version {
+  display: none;
+}
 p {
   font-family: 'Roboto', sans-serif;
   line-height: 22px;
@@ -26,6 +29,51 @@ h2 {
 }
 a:hover {
   text-decoration: none;
+}
+.stock {
+  background-color: #22a7f0;
+  padding: 15px 0 50px;
+}
+.stock h1 {
+  color: #fff;
+}
+.stock .media-left > svg {
+  width: 70px;
+  margin-top: -15px;
+}
+.stock .media-body {
+  color: #fff;
+  padding-left: 20px;
+}
+.stock .media-body h4 {
+  font-size: 24px;
+}
+.stock .section-heading {
+  margin-bottom: 20px;
+}
+#map {
+  height: 450px;
+}
+i.flaticon:before {
+  font-size: 45px !important;
+}
+.flex-centered {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+small-logo {
+  text-align: center;
+  margin: -30px 0;
+}
+.small-logo > svg {
+  width: 110px;
 }
 .section-heading {
   text-align: center;
@@ -123,6 +171,9 @@ a:hover {
 #top-bar .main-menu li a:hover {
   color: #22a7f0;
 }
+#top-bar .main-menu li a.active {
+  color: #22a7f0;
+}
 .navbar-custom .nav li > a {
   position: relative;
   color: #000;
@@ -137,7 +188,11 @@ a:hover {
   visibility: hidden;
   opacity: 0;
 }
+.title-line {
+  color: #22a7f0;
+}
 #hero-area {
+  background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   padding: 230px 0;
@@ -358,7 +413,8 @@ figure .overlay:hover a {
 figure .buttons {
   position: absolute;
   top: 45%;
-  left: 24%;
+  left: 35%;
+  font-size: 16px;
 }
 figure figcaption {
   padding: 20px 25px;
@@ -505,7 +561,7 @@ figure figcaption p {
   color: #555;
 }
 #footer .copyright {
-  font-size: 13px;
+  font-size: 16px;
   margin-bottom: 0;
   margin-top: 10px;
 }
@@ -524,9 +580,6 @@ figure figcaption p {
   font-size: 22px;
   color: #22a7f0;
 }
-.cd-headline.slide .cd-words-wrapper {
-  color: #22a7f0;
-}
 ul.social-icons {
   height: auto;
   overflow: hidden;
@@ -540,7 +593,7 @@ ul.social-icons li {
 }
 #copyright a:hover,
 #copyright nav .menu li a:hover {
-  color: #e4e4e4!important;
+  color: #e4e4e4 !important;
 }
 #copyright a,
 #copyright a:hover {
@@ -563,7 +616,7 @@ ul.social-icons li {
 .global-page-header .breadcrumb {
   background: none;
   font-size: 16px;
-  padding: 8px  0;
+  padding: 8px 0;
 }
 .global-page-header .breadcrumb .active {
   color: #fff;
@@ -740,7 +793,8 @@ ul.social-icons li {
 .works.service-page figure .buttons {
   position: absolute;
   top: 45%;
-  left: 13%;
+  left: 25%;
+  font-size: 15px;
 }
 #clients {
   padding: 30px 0 60px;
@@ -755,9 +809,6 @@ ul.social-icons li {
 }
 .works-fit {
   padding: 40px 0;
-}
-.works-fit figure .buttons {
-  left: 14%;
 }
 .fancybox-title h3 {
   font-size: 15px;
@@ -1022,6 +1073,10 @@ article {
   background: #22a7f0;
   color: #fff;
   border-radius: 0;
+}
+.post-img a > img {
+  display: block;
+  margin: 0 auto;
 }
 .social-share li {
   display: inline-block;

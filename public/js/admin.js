@@ -67,5 +67,7 @@ $(document).ready(function () {
 
     })();
 
+    $("#images").tosrus();
+    $("#main-image a").tosrus();
 
 });
