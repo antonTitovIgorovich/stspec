@@ -46,9 +46,9 @@ px      68    160    252    344    436    528    620    712    */
 ---------------------------------------------
 cols    1     2      3
 px      68    160    252    */
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 769px) and (min-width: 480px) {
   figure .buttons {
-    left: 25%;
+    left: 45%;
   }
   .mobile-version {
     display: block;
@@ -148,3 +148,8 @@ px      68    160    252    */
 ------------------------------------------------------------
 cols    1     2      3      4      5
 px      68    160    252    344    436    */
+@media only screen and (max-width: 480px) {
+  figure .buttons {
+    left: 35%;
+  }
+}

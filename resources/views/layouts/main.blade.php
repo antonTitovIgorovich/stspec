@@ -17,7 +17,7 @@
     <link rel="mask-icon" href="{{ asset('images/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <!-- Mobile Specific Metas
     ================================================== -->
-    <!-- <meta name="format-detection" content="telephone=no"> -->
+    <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Template CSS Files

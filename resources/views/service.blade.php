@@ -49,12 +49,8 @@
 
     <section class="works works-fit">
         <div class="container">
-            <h2 class="subtitle">Some Of Our Features Works</h2>
-            <p class="subtitle-des">
-                Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit amet
-                est. Aenean posuere <br> tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor
-                sagittis lacus.
-            </p>
+            <h2 class="subtitle">{{ env('APP_TITLE') }} предоставляет широкий спектр услуг :</h2>
+            <!-- <p class="subtitle-des"></p> -->
             @include('layouts.service_cards')
         </div>
     </section>
