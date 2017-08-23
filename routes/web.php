@@ -2,6 +2,8 @@
 
 Route::get('/', 'IndexController@index')->name('indexPage');
 
+Route::get('sitemap', 'IndexController@siteMap')->name('siteMap');
+
 Route::get('service/{id}', 'ServiceController@show')->name('serviceArticle');
 
 Route::group(['prefix' => 'blog'], function () {

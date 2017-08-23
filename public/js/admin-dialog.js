@@ -20,14 +20,14 @@ AdminDialog.prototype.execute = function () {
 function AdminDialogExecutor() {
     this.triggerAnClickEvent = function () {
         var defaultUri = this.uri,
-            manipulator = this.getDomManipulator();
+            domManipulator = this.getDomManipulator();
 
         $(this.startBtn).click(function (e) {
             e.preventDefault();
             var data = $(this).data();
             
-            manipulator.fillTitle(data);
-            manipulator.setHrefFromLink(data, defaultUri);
+            domManipulator.fillTitle(data);
+            domManipulator.setHrefFromLink(data, defaultUri);
         })
     };
 

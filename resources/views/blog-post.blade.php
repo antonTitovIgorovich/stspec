@@ -35,11 +35,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div id="main-image" class="post-img">
-                        <a href="{{ asset('storage/blog/img_main') . "/" .  $content->img_main }}">
-                            <img class="img-responsive" alt="{{ $content->title }}"
+                    <div class="post-img">
+                        <img class="img-responsive" alt="{{ $content->title }}"
                                  src="{{ asset('storage/blog/img_main') . "/" .  $content->img_main }}">
-                        </a>
                     </div>
                     <div class="post-content">
                         {!! $content->text !!}

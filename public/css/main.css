@@ -51,6 +51,9 @@ a:hover {
 .stock .section-heading {
   margin-bottom: 20px;
 }
+#images img {
+  padding: 5px;
+}
 #map {
   height: 450px;
 }

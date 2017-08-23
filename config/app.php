@@ -178,6 +178,10 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
         /*
+         * SiteMap
+         */
+        Roumen\Sitemap\SitemapServiceProvider::class,
+        /*
          * Application Service Providers...
          */
         St\Providers\AppServiceProvider::class,

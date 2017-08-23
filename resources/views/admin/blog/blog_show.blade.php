@@ -15,18 +15,19 @@
             </div>
         </div>
     </section><!--/#Page header-->
-
     <section class="portfolio-single">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><a href="{{ route('blog.index') }}">Блог</a></li>
+                        <li class="active">{{ $content->title }}</li>
+                    </ol>
                     <div id="main-image" class="post-img">
-                        <a href="{{ asset('storage/blog/img_main') . "/" .  $content->img_main }}">
-                            <img class="img-responsive" alt="{{ $content->title }}"
+                        <img class="img-responsive" alt="{{ $content->title }}"
                                  src="{{ asset('storage/blog/img_main') . "/" .  $content->img_main }}">
-                        </a>
                     </div>
-                    <div class="post-content">
+                    <div class="post-content portfolio-content">
                         {!! $content->text !!}
                     </div>
                     @if(count($content->images) > 0)

@@ -179,6 +179,8 @@ class AdminBlogController extends Controller
                 $imageMangerGallery->removeImage($image->file_name);
             }
 
+            unset($imageMangerGallery);
+
             Image::where("blog_id", $id)->delete();
         }
 

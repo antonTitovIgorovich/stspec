@@ -27,16 +27,18 @@
                             <td>{{ $item->title }}</td>
                             <td>{!! str_limit($item->text, 40) !!}</td>
                             <td>
-                                <a href="{{ route('stock.edit', ['id'=> $item->id]) }}" title="Edit"
-                                   class="btn btn-success">
-                                    <i class="ion-android-create"></i>
-                                </a>
-                                <a href="#" title="Delete" class="btn stock-dialog-btn btn-danger"
-                                   data-title="{{ $item->title }}"
-                                   data-id="{{ $item->id }}"
-                                   data-toggle="modal" data-target="#modal">
-                                    <i class="ion-close"></i>
-                                </a>
+                                <div class="event-btn-wrap">
+                                    <a href="{{ route('stock.edit', ['id'=> $item->id]) }}" title="Edit"
+                                       class="btn btn-success">
+                                        <i class="ion-android-create"></i>
+                                    </a>
+                                    <a href="#" title="Delete" class="btn stock-dialog-btn btn-danger"
+                                       data-title="{{ $item->title }}"
+                                       data-id="{{ $item->id }}"
+                                       data-toggle="modal" data-target="#modal">
+                                        <i class="ion-close"></i>
+                                    </a>
+                                </div>                                
                             </td>
                         </tr>
                     @endforeach

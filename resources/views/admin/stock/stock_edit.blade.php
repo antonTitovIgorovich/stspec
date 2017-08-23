@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label for="editor">Текст:</label>
-                        <textarea name="text" id="editor">{{ $content->text }}</textarea>
+                        <textarea name="text" id="editor">{!! $content->text !!}</textarea>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Редактировать</button>

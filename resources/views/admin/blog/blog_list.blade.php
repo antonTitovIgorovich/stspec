@@ -30,20 +30,22 @@
 									<p>{{ str_limit($item->desc, 50) }}</p>
 							 	@endif
 							<td>
-								<a href="{{ route('blog.show', ['id'=> $item->id]) }}" title="Show"
+								<div class="event-btn-wrap">
+									<a href="{{ route('blog.show', ['id'=> $item->id]) }}" title="Show"
 								   class="btn btn-primary">
 									<i class="ion-eye"></i>
-								</a>
-								<a href="{{ route('blog.edit', ['id'=> $item->id]) }}" title="Edit"
+									</a>
+									<a href="{{ route('blog.edit', ['id'=> $item->id]) }}" title="Edit"
 								   class="btn btn-success">
 									<i class="ion-android-create"></i>
-								</a>
-								<a href="#" title="Delete" class="btn blog-dialog-btn btn-danger"
+									</a>
+									<a href="#" title="Delete" class="btn blog-dialog-btn btn-danger"
 								   data-title="{{ $item->title }}"
 								   data-id="{{ $item->id }}"
 								   data-toggle="modal" data-target="#modal">
 									<i class="ion-close"></i>
-								</a>
+									</a>									
+								</div>
 							</td>
 						</tr>
 					@endforeach

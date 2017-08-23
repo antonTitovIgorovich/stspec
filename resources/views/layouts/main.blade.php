@@ -120,28 +120,16 @@
 @include('layouts.sections.footer')
 <!-- Template Javascript Files
     ================================================== -->
-<script id="script">
-    var menuUrlArr = [
-        '{!! url('/') !!}',
-        [
-            @foreach($services as $service)
-                '{{ route('serviceArticle', $service->id) }}',
-            @endforeach
-        ],
-        '{{ route('blog') }}',
-        '{{ route('contact') }}'
-    ];
-</script>
 <!-- modernizr js -->
 <script src="{{ asset('js/vendor/modernizr-2.6.2.min.js') }}"></script>
 <!-- jquery -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/menu-item-active.js') }}"></script>
-<!-- owl carouserl js -->
-{{--<script src="{{ asset('js/owl.carousel.min.js') }}"></script>--}}
-<!-- bootstrap js -->
+<!-- tosrus js -->
+<script src="{{ asset('js/vendor/hammer.min.js') }}"></script>
 <script src="{{ asset('js/jquery.tosrus.all.min.js') }}"></script>
-
+<script src="{{ asset('js/tosrus_init.js') }}"></script>
+<!-- bootstrap js -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <!-- wow js -->
 <script src="{{ asset('js/wow.min.js') }}"></script>

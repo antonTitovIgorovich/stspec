@@ -26,7 +26,7 @@ Slider Section Start
                                     <b>Forester</b>
                                     <b>Tribeca</b>
                                     <b>Impreza STI</b>
-                                    <b>Levord</b>
+                                    <b>Levorg</b>
                                     <b>Outback</b>
                                 </span>
                             </h1>

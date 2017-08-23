@@ -3,7 +3,7 @@
 namespace St\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use St\Helpers\ImageManager;
+use St\Helpers\ImageManager\ImageManager;
 
 class ImageManagerProvider extends ServiceProvider
 {

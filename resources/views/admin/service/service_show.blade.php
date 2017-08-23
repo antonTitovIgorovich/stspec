@@ -20,6 +20,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><a href="{{ route('service.index') }}">Сервис</a></li>
+                        <li class="active">{{ $content->title }}</li>
+                    </ol>
                     <div class="portfolio-single-img">
                         <img class="img-responsive" src="{{ asset('storage/services') . "/" . $content->img  }}"
                              alt="{{ $content->title }}">
