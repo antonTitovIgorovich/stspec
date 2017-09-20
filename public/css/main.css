@@ -9,9 +9,6 @@ h5,
 h6 {
   font-family: 'Roboto Condensed', sans-serif;
 }
-.mobile-version {
-  display: none;
-}
 p {
   font-family: 'Roboto', sans-serif;
   line-height: 22px;
@@ -29,6 +26,88 @@ h2 {
 }
 a:hover {
   text-decoration: none;
+}
+.gm-link {
+  text-align: center;
+  display: inline-block;
+  background: #22a7f0;
+  color: #fff;
+  padding: 8px 18px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  border: 1px solid #fff;
+  -webkit-box-shadow: 0px 0px 0px 1px #22a7f0;
+          box-shadow: 0px 0px 0px 1px #22a7f0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.offer {
+  font-size: 1.6em;
+  color: #22a7f0;
+}
+.contacts-head {
+  color: black;
+  position: fixed;
+  top: 33.5px;
+  left: 50vw;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+.contacts-head i {
+  float: left;
+}
+.contacts-head i:before {
+  font-size: 23px;
+  color: #22a7f0;
+  margin-top: -4px;
+  padding: 4px;
+}
+.contacts-head p {
+  float: right;
+}
+.contacts-head.active {
+  top: 28.5px;
+}
+.call-me {
+  display: none;
+  position: fixed;
+  right: -57px;
+  top: 80%;
+  z-index: 999;
+  /* Для Firefox */
+  /* Для IE */
+  -webkit-transform: rotate(270deg);
+  /* Для Safari, Chrome, iOS */
+  /* Для Opera */
+  transform: rotate(270deg);
+}
+.call-me a {
+  display: inline-block;
+  border: 1px solid #fff;
+  padding: 5px 15px;
+  background-color: #22a7f0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.call-me a:hover {
+  background-color: #e74c3c;
+}
+.call-me p,
+.call-me i {
+  color: #fff;
+}
+.call-me p {
+  float: right;
+  font-size: 1.3em;
+  margin: 0;
+}
+.call-me i {
+  color: #fff;
+  float: left;
+  padding-right: 5px;
+}
+.call-me i:before {
+  font-size: 1.6em;
 }
 .stock {
   background-color: #22a7f0;
@@ -159,6 +238,9 @@ small-logo {
 }
 #top-bar .main-menu li > a {
   color: #444;
+}
+#top-bar .main-menu .nav {
+  z-index: 9999999999999999999999999999;
 }
 #top-bar .main-menu li {
   position: relative;
@@ -567,9 +649,18 @@ figure figcaption p {
   font-size: 16px;
   margin-bottom: 0;
   margin-top: 10px;
+  display: inline-block;
 }
-#footer .copyright a {
+#footer .copyright li i {
+  float: left;
   color: #22a7f0;
+  padding-right: 10px;
+}
+#footer .copyright li i:before {
+  font-size: 1.6em;
+}
+#footer .copyright li p {
+  float: right;
 }
 #footer .social {
   text-align: right;

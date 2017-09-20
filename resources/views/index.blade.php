@@ -13,7 +13,7 @@ Slider Section Start
             <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="block wow fadeInUp" data-wow-delay=".3s">
-
+                        <p class="offer">Автосервис в Киеве на ул.Б.Окружная 4-б</p>
                         <!-- Slider -->
                         <section class="cd-intro">
                             <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s">
@@ -32,7 +32,6 @@ Slider Section Start
                             </h1>
                             <h2 class="wow fadeInUp animated" data-wow-delay=".6s">
                                 <span>Сервис тюнинг специализация</span><br>
-                                <span>г.Киев ул.Б.Окружная 4-б</span>
                             </h2>
                         </section> <!-- cd-intro -->
                         <!-- /.slider -->

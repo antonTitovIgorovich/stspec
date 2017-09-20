@@ -5,7 +5,51 @@
 ================================================== */
 
 /* Large Devices, Wide Screens */
-@media (min-width : 1200px) {
+@media only screen and (max-width: 1200px){
+	.contacts-head{
+		left: 45%;	
+	}
+}
+
+
+
+@media only screen and (max-width: 991px){
+	
+
+	.navbar-header .navbar-brand a{
+		width: 155px;
+		padding-top: 10px;
+	}
+
+	.contacts-head{
+		left: 35%;	
+	}
+
+	.call-me{
+		display: block;
+	}
+}
+
+
+@media only screen and (max-width: 991px)  and (min-width: 767px){
+			
+	figure{
+		.buttons{
+			left: 25%;
+		}
+	}
+
+}
+
+
+@media only screen and (max-width: 930px){
+	.contacts-head{
+		left: 32%;	
+	}	
+}
+
+
+@media only screen and (min-width: 769px){
 
 	/* Dropdown animation */
 	.navbar-nav .dropdown-menu,
@@ -58,30 +102,6 @@
 cols    1     2      3      4      5      6      7      8
 px      68    160    252    344    436    528    620    712    */
 
-@media only screen and (max-width: 991px) and (min-width: 767px) {
-			
-	figure{
-		.buttons{
-			left: 25%;
-		}
-	}
-
-}
-
-
-
-@media only screen and (max-width: 769px){
-
-	.event-btn-wrap {
-			display: flex;
-			flex-direction: column;
-			a {
-				margin-top: 10px;
-			}
-		}
-
-	
-}
 
 
 
@@ -93,23 +113,38 @@ px      68    160    252    344    436    528    620    712    */
 cols    1     2      3
 px      68    160    252    */
 
-@media only screen and (max-width: 769px) and (min-width: 480px) {
+@media only screen and (max-width: 769px) {
 	figure{
 		.buttons{
 			left: 42%;
 		}
 	}
-	.mobile-version{
-		display: block;
+
+	.offer{
+		margin-top: 40px;
 	}
-	.desktop-version{
-		display: none;
+
+	.contacts-head{
+		left: 32%;	
 	}
+
+	.event-btn-wrap {
+			display: flex;
+			flex-direction: column;
+			a {
+				margin-top: 10px;
+			}
+		}
+
+	.contacts-head{
+		left: 50%;	
+	}
+	
 	.title {
 		font-size: 40px;
 	}
 	.navbar-header .navbar-brand a {
-		padding: 6px 8px;
+		padding-left: 10px;
 	}
 	#hero-area {
 		padding:140px 0;
@@ -132,9 +167,6 @@ px      68    160    252    */
 	    margin: 0px 0px 35px;
 	}
 
-	#footer .copyright {
-		text-align: center;
-	}
 	#footer .social {
 		text-align: center;
 	}
@@ -210,6 +242,13 @@ px      68    160    252    344    436    */
 			left: 35%;
 		}
 	}	
+	
+	.contacts-head{
+		p{
+			font-size: 12px;	
+		}	
+	}
+
 	
 }
 

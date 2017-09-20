@@ -85,7 +85,7 @@
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" name="main_page"
-                                       @if( old('main_page') === 'on' or $content->main_page === 1 )
+                                       @if( old('main_page') === 'on' or $content->main_page == 1 )
                                        checked
                                         @endif
                                 > Отобразить на главной

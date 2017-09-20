@@ -1,2 +1,2 @@
-$(".button-collapse").sideNav();
-$('.collapsible').collapsible();
+// $(".button-collapse").sideNav();
+// $('.collapsible').collapsible();

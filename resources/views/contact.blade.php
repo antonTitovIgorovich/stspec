@@ -38,29 +38,30 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="map-area">
-                        <h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Найти нас</h2>
-                        <p class="subtitle-des wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">
+                        <h2 class="subtitle">Найти нас</h2>
+                        <p class="subtitle-des">
                             г.Киев ул.Б.Окружная 4-б, возле Ашана, поворот перед БРСМ-Нафта
                         </p>
+                        <a href="https://www.google.com.ua/maps/place/ST+spec+SUBARU/@50.427834,30.358725,15z/data=!4m5!3m4!1s0x0:0xf47ddbf1b88fe840!8m2!3d50.427834!4d30.358725" class="gm-link">{{ env('APP_TITLE') }} на "Google Maps"</a>
                         <div id="map"></div>
                     </div>
                 </div>
             </div>
             <div class="row address-details">
                 <div class="col-md-4">
-                    <div class="address wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".3s">
+                    <div class="address">
                         <i class="ion-ios-location-outline"></i>
                         <p>г.Киев<br>ул.Б.Окружная 4-б</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="email wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s" style="height: 178px">
+                    <div class="email" style="height: 178px">
                         <i class="ion-ios-email-outline"></i>
                         <p>stspec@ukr.net</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="phone wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".9s">
+                    <div class="phone">
                         <i class="ion-ios-telephone-outline"></i>
                         <p>(068) 502-28-82 (сервис)<br>(073) 402-28-82 (зап.части)</p>
                     </div>
@@ -70,23 +71,10 @@
     </section>
 @endsection('content')
 @section('findUs')
-<section id="call-to-action" class="mobile-version">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="block">
-                        <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="200ms">Позвонить к нам</h2>
-                        <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="300ms">На номер Киевстар (068) 502-28-82</p>
-                        <a href="tel:0685022882" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s"
-                           data-wow-duration="500ms">Позвонить</a>
-                    </div>
-                </div>
 
-            </div>
-        </div>
-    </section>
 @endsection('findUs')
 @section('googleMapScript')
 <!-- google map -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD7pg71lgH5y_eGNIpVUzispD53ExiNeg&callback=initMap" async defer></script>
+<script src="{{ asset('js/google-map_init.js') }}"></script>
 @endsection('googleMapScript')

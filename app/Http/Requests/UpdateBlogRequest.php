@@ -26,7 +26,7 @@ class UpdateBlogRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'desc' => 'required|max:255',
-            'keywords' => 'required|max:255',
+            'keywords' => 'required|max:255|regex:/^([0-9a-zа-я][^\s]+)([,][^\s][0-9a-zа-я]+)*$/i',
             'img_main' => 'image',
             'images' => 'array',
             'remove_imgs' => 'nullable|string',

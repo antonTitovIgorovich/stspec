@@ -15,10 +15,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.mobile-version{
-  display: none;
-}
-
 p {
   font-family: @roboto;
   line-height: 22px;
@@ -41,36 +37,124 @@ a:hover {
   text-decoration: none;
 }
 
-.stock{
-  background-color: @primary-color;
-  padding: 15px 0 50px;
-  h1{
+.gm-link {
+  text-align: center;
+  display: inline-block;
+  background: @primary-color;
+  color: #fff;
+  padding: 8px 18px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  border: 1px solid #fff;
+  box-shadow: 0px 0px 0px 1px @primary-color;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+   -o-transition: 0.3s;
+   transition: 0.3s;
+}
+
+.offer{
+  font-size: 1.6em;
+  color: @primary-color;
+}
+
+.contacts-head{
+  color: black;
+  position: fixed;
+  top: 33.5px;
+  left: 50vw;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  i{
+    float: left;
+    &:before{
+      font-size: 23px;
+      color: @primary-color;
+      margin-top: -4px;
+      padding: 4px;
+    }
+  }
+  p{
+    float: right; 
+  }
+  &.active{
+    top: 28.5px;
+  }
+}
+
+.call-me{
+  display: none;
+  position: fixed;
+  right: -57px;
+  top: 80%;
+  z-index: 999;
+  -moz-transform: rotate(270deg); /* Для Firefox */
+  -ms-transform: rotate(270deg); /* Для IE */
+  -webkit-transform: rotate(270deg); /* Для Safari, Chrome, iOS */
+  -o-transform: rotate(270deg); /* Для Opera */
+  transform: rotate(270deg);
+  a{
+    display: inline-block;
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    background-color: @primary-color;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    &:hover{
+      background-color: #e74c3c;      
+    }
+  }
+  p,i{
     color: #fff;
   }
-  .media-left > svg{
+  p{
+    float: right;
+    font-size: 1.3em;
+    margin: 0;
+  }
+  i{
+    color: #fff;
+    float: left;
+    padding-right: 5px;
+    &:before{
+      font-size: 1.6em;
+    }
+  }
+}
+
+.stock {
+  background-color: @primary-color;
+  padding: 15px 0 50px;
+  h1 {
+    color: #fff;
+  }
+  .media-left > svg {
     width: 70px;
-    margin-top: -15px;  }
-  .media-body{
+    margin-top: -15px;
+  }
+  .media-body {
     color: #fff;
     padding-left: 20px;
-    h4{
+    h4 {
       font-size: 24px;
     }
   }
-  .section-heading{
+  .section-heading {
     margin-bottom: 20px;
   }
 }
 
-#images img{
+#images img {
   padding: 5px;
 }
 
 #map {
- height: 450px;
+  height: 450px;
 }
 
-i.flaticon:before{
+i.flaticon:before {
   font-size: 45px !important;
 }
 
@@ -80,15 +164,14 @@ i.flaticon:before{
   align-items: center;
 }
 
-small-logo{
+small-logo {
   text-align: center;
   margin: -30px 0;
 }
 
-.small-logo>svg{
+.small-logo > svg {
   width: 110px;
 }
-
 
 .section-heading {
   text-align: center;
@@ -134,7 +217,7 @@ small-logo{
 }
 
 .navbar-default .navbar-nav > li > a {
-  &:hover{
+  &:hover {
     color: @primary-color;
   }
 }
@@ -184,7 +267,9 @@ small-logo{
     color: #444;
   }
   .main-menu {
-
+    .nav{
+      z-index: 9999999999999999999999999999;
+    }
     li {
       position: relative;
       a {
@@ -463,7 +548,7 @@ figure {
     position: absolute;
     top: 45%;
     left: 35%;
-    font-size: 16px; 
+    font-size: 16px;
   }
   figcaption {
     padding: 20px 25px;
@@ -611,8 +696,19 @@ figure {
     font-size: 16px;
     margin-bottom: 0;
     margin-top: 10px;
-    a {
-      color: @primary-color;
+    display: inline-block;
+    li{
+      i{
+        float: left;
+        color: @primary-color;
+        padding-right: 10px;
+        &:before{
+          font-size: 1.6em;
+        }
+      }
+      p{
+        float: right;
+      }
     }
   }
 

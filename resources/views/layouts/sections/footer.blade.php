@@ -2,12 +2,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-sm-10">
-            <p class="copyright">Developed by 
-                <a href="https://www.facebook.com/profile.php?id=100008824459264">
-                AntonTitov
-                    <i class="ion-social-facebook"></i>
-                </a>
-             </p>
+                 <ul class="copyright">
+                    <li>
+                        <i class="ion-ios-email-outline"></i>
+                        <p>stspec@ukr.net</p>
+                    </li>
+                    <li>
+                        <i class="ion-ios-telephone-outline"></i>
+                        <p>(068) 502-28-82</p>
+                    </li>
+                </ul>
             </div>
             <div class="col-md-2 col-sm-2">
                 <div class="small-logo">

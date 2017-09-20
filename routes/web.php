@@ -27,3 +27,8 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login/auth', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
+Route::get('/clear_cache', function(){
+	Artisan::call('config:clear');
+	return redirect()->route('indexPage');
+});
+

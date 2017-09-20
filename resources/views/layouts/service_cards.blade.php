@@ -1,6 +1,6 @@
 <div class="row">
     @foreach($services as $key => $article)
-        @continue( $article->main_page !== 1 )
+        @continue( $article->main_page != 1 )
         <div class="col-sm-4 col-xs-12">
             <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms"
                     data-wow-delay="{{ $key * 200 }}ms">

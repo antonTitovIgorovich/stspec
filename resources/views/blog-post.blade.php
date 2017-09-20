@@ -54,6 +54,20 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="{{ route('indexPage') }}">
+                                <i class="ion-ios-home"></i>
+                                Главная
+                            </a>
+                        </li>
+                        <li><a href="{{ route('blog') }}">Блог</a></li>
+                        <li class="active">{{ $content->title }}</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <div class="comments">
                         @include('layouts.sections.disqus')
                     </div>

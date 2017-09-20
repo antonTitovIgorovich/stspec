@@ -1,5 +1,6 @@
 <nav class="collapse navbar-collapse navbar-right" role="navigation">
     <div class="main-menu">
+        <!-- tel-head -->
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <a  href="{{ route('indexPage') }}" title="{{ env('APP_TITLE') }}">Главная</a>
@@ -28,3 +29,5 @@
         </ul>
     </div>
 </nav>
+<!-- <div class="tel-head"><p>(068) 502-28-82</p></div>
+ -->
