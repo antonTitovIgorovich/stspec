@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stock extends Model
 {
-    protected $table = 'stocks';
-    protected $fillable = ['title', 'text'];
+	protected $table = 'stocks';
+	protected $fillable = ['title', 'text'];
+
+	use MethodGetByIdTrait;
 }

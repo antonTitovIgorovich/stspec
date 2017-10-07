@@ -4,6 +4,10 @@ namespace St\Http\Controllers;
 
 class ServiceController extends SiteController
 {
+	/** Show service article by id
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
     public function show($id)
     {
         $this->setTemplate('service');

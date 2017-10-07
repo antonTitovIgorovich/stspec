@@ -2,7 +2,7 @@
 
 namespace St\Http\Controllers;
 
-use St\Models\Service;
+use St\Repositories\ServiceRepo\ServiceRepo;
 
 class SiteController extends Controller
 {
@@ -11,7 +11,8 @@ class SiteController extends Controller
 
     public function __construct()
     {
-        $this->addVars('services', Service::all());
+    	$service = new ServiceRepo();
+        $this->addVars('services', $service->getAll());
     }
 
     protected function setTemplate($template)

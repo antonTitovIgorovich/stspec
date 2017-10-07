@@ -1,11 +1,11 @@
 <?php
 
-namespace St\Helpers\ImageManager;
+namespace St\Helpers\ImageStorageManager;
 
 use Illuminate\Http\Request;
 
 
-class StrategyForTheArrayOfNames 
+class StrategyForTheArrayOfNames implements StrategyInterface
 {
     const STRING_FLAG = 'string';
     private $strategy;

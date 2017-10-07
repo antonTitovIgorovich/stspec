@@ -192,7 +192,8 @@ return [
         /*
          * My custom providers.
          */
-        St\Providers\ImageManagerProvider::class,
+        St\Providers\ImageStorageManagerProvider::class,
+        St\Providers\RepositoryServiceProvider::class,
 
     ],
 

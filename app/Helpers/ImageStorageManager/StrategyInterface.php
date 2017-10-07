@@ -1,10 +1,10 @@
 <?php
 
-namespace St\Helpers\ImageManager;
+namespace St\Helpers\ImageStorageManager;
 
 use Illuminate\Http\Request;
 
-interface Strategy
+interface StrategyInterface
 {
     public function setRequest(Request $request);
 

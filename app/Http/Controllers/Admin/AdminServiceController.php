@@ -3,144 +3,110 @@
 namespace St\Http\Controllers\Admin;
 
 use St\Http\Controllers\Controller;
-use St\Models\Service;
-use App;
+use St\Repositories\ServiceRepo\ServiceRepoContract;
 use St\Http\Requests\{
-    StoreServiceArticle, UpdateServiceArticle
+	StoreServiceArticle, UpdateServiceArticle
 };
 
 class AdminServiceController extends Controller
 {
-    /**
-     * Get class ImageManager with settings.
-     *
-     * @return \St\App\Http\Helpers\ImageManager;
-     */
+	/**
+	 * @var ServiceRepoContract
+	 */
+	protected $repository;
 
-    private static function getImageManager()
-    {
-        return App::make('ImageManager')
-            ->setInputName('img')
-            ->setDestinationFolder('services');
-    }
+	/**
+	 * AdminServiceController constructor.
+	 * @param ServiceRepoContract $repository
+	 */
+	public function __construct(ServiceRepoContract $repository)
+	{
+		$this->repository = $repository;
+	}
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $content = Service::orderBy('id', 'desc')->paginate(8);
-        return view('admin.service.service_list', ['content' => $content]);
-    }
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index()
+	{
+		$content = $this->repository->paginate(8);
+		return view('admin.service.service_list', compact('content'));
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin.service.service_create');
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create()
+	{
+		return view('admin.service.service_create');
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  $request ;
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(StoreServiceArticle $request)
-    {
-        $service = new Service;
-        $service->title = $request->title;
-        $service->desc = $request->desc;
-        $service->keywords = $request->keywords;
-        $service->text = $request->text;
-        $service->main_page = $request->main_page === 'on' ? 1 : null;
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param \St\Http\Requests\StoreServiceArticle $request ;
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function store(StoreServiceArticle $request)
+	{
+		$this->repository->store($request);
+		return back()
+			->with('status', 'Запись добавленна!')
+			->withInput();
+	}
 
-        self::getImageManager()
-            ->uploadImage($request,
-                function ($imageName) use ($service) {
-                    $service->img = $imageName;
-                });
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show($id)
+	{
+		$content = $this->repository->getById($id);
+		return view('admin.service.service_show', compact('content'));
+	}
 
-        $service->save();
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit($id)
+	{
+		$content = $this->repository->getById($id);
+		return view('admin.service.service_edit', compact('content'));
+	}
 
-        return back()
-            ->with('status', 'Запись добавленна!')
-            ->withInput();
-    }
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \St\Http\Requests\UpdateServiceArticle $request
+	 * @param  int $id
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function update(UpdateServiceArticle $request, $id)
+	{
+		$this->repository->update($request, $id);
+		return back()
+			->with('status', 'Запись обновленна!')
+			->withInput();
+	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $content = Service::find($id);
-        return view('admin.service.service_show', ['content' => $content]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $content = Service::find($id);
-        return view('admin.service.service_edit', ['content' => $content]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \St\Http\Requests\UpdateServiceArticle $request
-     * @param  int $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(UpdateServiceArticle $request, $id)
-    {
-        $service = Service::find($id);
-        $service->title = $request->title;
-        $service->desc = $request->desc;
-        $service->keywords = $request->keywords;
-        $service->text = $request->text;
-        $service->main_page = $request->main_page === 'on' ? 1 : null;
-
-        $oldImageName = $service->img;
-        self::getImageManager()
-            ->updateImage($request, $oldImageName,
-                function ($newImage) use ($service) {
-                    $service->img = $newImage;
-                });
-
-        $service->save();
-
-        return back()
-            ->with('status', 'Запись обновленна!')
-            ->withInput();
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $service = Service::find($id);
-
-        self::getImageManager()->removeImage($service->img);
-
-        $service->delete();
-
-        return response()->json(['id' => $id]);
-    }
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy($id)
+	{
+		$this->repository->delete($id);
+		return response()->json(compact('id'));
+	}
 }

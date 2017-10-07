@@ -1,10 +1,10 @@
 <?php
 
-namespace St\Helpers\ImageManager;
+namespace St\Helpers\ImageStorageManager;
 
 use Illuminate\Http\Request;
 
-class StringStrategy implements Strategy
+class StringStrategy implements StrategyInterface
 {
     private $request;
     private $inputName;
