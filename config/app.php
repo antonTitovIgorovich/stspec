@@ -162,7 +162,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
@@ -177,11 +176,11 @@ return [
          * Intervention-image
          */
         Intervention\Image\ImageServiceProvider::class,
-        /*
-         * SiteMap
-         */
-        Roumen\Sitemap\SitemapServiceProvider::class,
-        /*
+	    /**
+	     * Roumen SiteMap
+	     */
+	    Roumen\Sitemap\SitemapServiceProvider::class,
+	    /*
          * Application Service Providers...
          */
         St\Providers\AppServiceProvider::class,

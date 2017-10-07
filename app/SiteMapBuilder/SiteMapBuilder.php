@@ -38,7 +38,10 @@ class SiteMapBuilder
 		$blogPost = Blog::orderBy('id', 'desc')->get();
 		foreach ($blogPost as $post) {
 			$image = [
-				['url' => asset('storage/blog/img_main') . "/" . $post->img_main, 'title' => $post->title],
+				[
+					'url' => asset('storage/blog/img_main') . "/" . $post->img_main,
+					'title' => $post->title
+				],
 			];
 			$this->siteMapApp->add(
 				route('blogPost', ['id' => $post->id]),
@@ -54,7 +57,10 @@ class SiteMapBuilder
 		$service = Service::orderBy('id', 'desc')->get();
 		foreach ($service as $article) {
 			$image = [
-				['url' => asset('storage/service') . "/" . $article->img, 'title' => $article->title],
+				[
+					'url' => asset('storage/service') . "/" . $article->img,
+					'title' => $article->title
+				],
 			];
 			$this->siteMapApp->add(
 				route('serviceArticle', ['id' => $article->id]),
@@ -74,18 +80,16 @@ class SiteMapBuilder
 
 	public function build()
 	{
-		if (!$this->siteMapApp->isCached()):
+		if (!$this->siteMapApp->isCached())
 			$this->createFromIndexPage()
 				->createFromBlogListPage()
 				->createFromBlogArticlePages()
 				->createFromServiceArticlePages()
 				->createFromContactPage();
-		endif;
 	}
 
 	public function renderXml()
 	{
-//		dd($this->siteMapApp);
 		return $this->siteMapApp->render('xml');
 	}
 }
