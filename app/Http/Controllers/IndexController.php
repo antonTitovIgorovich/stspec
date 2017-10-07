@@ -33,9 +33,12 @@ class IndexController extends SiteController
 		/*$siteMap = new SiteMapBuilder();
 		$siteMap->build();
 		return $siteMap->renderXml();*/
-		$sitemap = App::make('sitemap');
-		$sitemap->setCache('laravel.sitemap', 60);
-		if (!$sitemap->isCached()):
+
+		$sitemap = App::make("sitemap");
+//		dd($sitemap);
+//		$sitemap->setCache('laravel.sitemap', 60);
+//		if (!$sitemap->isCached()):
+
 			// Index
 			$sitemap->add(url('/'), '2017-08-20T20:10:00+02:00', '1.0', 'monthly');
 
@@ -49,7 +52,6 @@ class IndexController extends SiteController
 					['url' => asset('storage/blog/img_main') . "/" . $post->img_main, 'title' => $post->title],
 				];
 				$sitemap->add(route('blogPost', ['id' => $post->id]), $post->updated_at, '0.9', 'daily', $image);
-				unset($image);
 			}
 
 			//Service article
@@ -64,12 +66,11 @@ class IndexController extends SiteController
 					'daily',
 					$image
 				);
-				unset($image);
 			}
 
 			//Contact
 			$sitemap->add(route('contact'), '2017-08-20T20:10:00+02:00', '1.0', 'monthly');
-		endif;
+//		endif;
 		return $sitemap->render('xml');
 	}
 
