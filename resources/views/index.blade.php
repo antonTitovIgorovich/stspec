@@ -98,7 +98,7 @@ Slider Section Start
 	                        </div>
 	                        <div class="media-body">
 	                            <h4 class="media-heading">{{ $stock->title }}</h4>
-	                            {!! $stock->text !!}                  
+	                            {!! $stock->text !!}
 	                        </div>
 	                    </div>
                		</div>

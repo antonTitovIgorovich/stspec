@@ -6,25 +6,43 @@ use St\Repositories\ServiceRepo\ServiceRepo;
 
 class SiteController extends Controller
 {
-    protected $template = '';
+    protected $template;
     protected $vars = [];
 
+	/**
+	 * SiteController constructor.
+	 */
     public function __construct()
     {
     	$service = new ServiceRepo();
         $this->addVars('services', $service->getAll());
     }
 
-    protected function setTemplate($template)
+	/**
+	 * Set template path from view().
+	 * @param string $template
+	 */
+    protected function setTemplate(string $template)
     {
         $this->template = $template;
     }
 
-    protected function addVars($key, $value)
+	/**
+	 * Add vars from view().
+	 *
+	 * @param string $key
+	 * @param string $value
+	 */
+    protected function addVars(string $key, string $value)
     {
         $this->vars[$key] = $value;
     }
 
+	/**
+	 * Render view.
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
     protected function renderOutput()
     {
         return view($this->template, $this->vars);

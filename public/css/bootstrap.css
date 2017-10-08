@@ -148,7 +148,7 @@ td, th {
     padding: 0;
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */@media print {
-    *, : after, :before {
+    *, :after, :before {
     color: #000!important;
     text-shadow: none!important;
     background: 0 0!important;
@@ -206,9 +206,9 @@ select {
     border: 1px solid #ddd!important;
 }
 }@font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url(../fonts/glyphicons-halflings-regular.eot);
-    src: url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'), url(../fonts/glyphicons-halflings-regular.woff2) format('woff2'), url(../fonts/glyphicons-halflings-regular.woff) format('woff'), url(../fonts/glyphicons-halflings-regular.ttf) format('truetype'), url(../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg');
+    /*font-family: 'Glyphicons Halflings';*/
+    /*src: url(../fonts/glyphicons-halflings-regular.eot);*/
+    /*src: url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'), url(../fonts/glyphicons-halflings-regular.woff2) format('woff2'), url(../fonts/glyphicons-halflings-regular.woff) format('woff'), url(../fonts/glyphicons-halflings-regular.ttf) format('truetype'), url(../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg');*/
 }
 .glyphicon {
     position: relative;
@@ -4694,8 +4694,8 @@ button.close {
     transition: transform .6s ease-in-out;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
 }
 .carousel-inner>.item.active.right, .carousel-inner>.item.next {
     left: 0;
