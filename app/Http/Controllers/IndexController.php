@@ -5,7 +5,6 @@ namespace St\Http\Controllers;
 use St\Repositories\StockRepo\StockRepoContract;
 use St\SiteMapBuilder\SiteMapBuilder;
 
-
 class IndexController extends SiteController
 {
 	protected $repository;
