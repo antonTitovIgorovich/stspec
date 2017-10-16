@@ -9,15 +9,27 @@ use App;
 
 class ImageStorageManager implements ImageStorageManagerContract
 {
+	/**
+	 * Input name type File
+	 * @var string
+	 */
 	private $inputName = '';
 	private $destinationPath = '';
 	private $storagePath = '';
 
 	public function __construct()
 	{
+		/*
+		 * Use singleton to Providers\ImageStorageManagerProvider\
+		*/
 		$this->storagePath = App::make('GetStoragePath');
 	}
 
+	/**
+	 *
+	 * @param string $destinationPath
+	 * @return $this
+	 */
 	public function setDestinationPath(string $destinationPath)
 	{
 		$this->destinationPath = $destinationPath . "/";
@@ -27,6 +39,11 @@ class ImageStorageManager implements ImageStorageManagerContract
 		return $this;
 	}
 
+	/**
+	 * Set input name to work with request
+	 * @param string $name
+	 * @return $this
+	 */
 	public function setInputName(string $name)
 	{
 		$this->inputName = $name;

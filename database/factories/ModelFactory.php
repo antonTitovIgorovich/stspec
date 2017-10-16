@@ -29,6 +29,7 @@ $factory->define(St\Models\Service::class, function (Faker $faker) {
     return [
         'title' => $faker->title,
         'desc' => $faker->sentence(4),
+        'keywords' => $faker->sentence(4),
         'text' => $faker->paragraph(),
         'img' => $faker->imageUrl(600, 500),
     ];
@@ -46,6 +47,7 @@ $factory->define(St\Models\Blog::class, function (Faker $faker) {
     return [
         'title' => $faker->title,
         'desc' => $faker->paragraph(),
+        'keywords' => $faker->sentence(4),
         'img_main' => $faker->imageUrl(600, 500),
         'text' => $faker->paragraph(),
     ];

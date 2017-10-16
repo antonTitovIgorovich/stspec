@@ -14,13 +14,10 @@ class Service extends Model
 
 	use MethodGetByIdTrait;
 
-	/**
-	 * Set the main_page
-	 * @param ?int $value
-	 */
 	public function setMainPageAttribute($value)
 	{
-		$this->attributes['main_page'] = $value === 'on' ? 1 : null;
+		$mutate = $value == 'on' ? 1 : 0;
+		$this->attributes['main_page'] = $mutate;
 	}
 
 }

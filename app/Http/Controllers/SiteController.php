@@ -31,9 +31,9 @@ class SiteController extends Controller
 	 * Add vars from view().
 	 *
 	 * @param string $key
-	 * @param string $value
+	 * @param  $value
 	 */
-	protected function addVars(string $key, string $value)
+	protected function addVars(string $key, $value)
 	{
 		$this->vars[$key] = $value;
 	}

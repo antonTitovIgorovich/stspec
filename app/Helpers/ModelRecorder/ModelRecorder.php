@@ -25,11 +25,11 @@ class ModelRecorder
 	/**
 	 * @var array
 	 */
-	protected $modifiedFillableArr;
+	protected $fillableArr;
 
 	protected $ignoredValue;
 
-	private $assignValueState = false;
+	private $assignValueFlag = false;
 
 	/**
 	 * ModelRecorder constructor.
@@ -42,6 +42,10 @@ class ModelRecorder
 		$this->request = $request;
 	}
 
+	/**
+	 * Set Ignored Value
+	 * @param string
+	 */
 	public function setIgnoredValue(string $value)
 	{
 		$this->ignoredValue = $value;
@@ -51,9 +55,9 @@ class ModelRecorder
 	 * Remove item of fillable array.
 	 * @param string $item
 	 */
-	public function setModifiedFillableArr(string $item)
+	protected function removeItemOfFillableArr(string $item)
 	{
-		$this->modifiedFillableArr = array_diff(
+		$this->fillableArr = array_diff(
 			$this->model->getFillable(), [$item]
 		);
 	}
@@ -65,16 +69,18 @@ class ModelRecorder
 	 */
 	public function assignValue(array $dataArr)
 	{
-		$fillableArr = $this->model->getFillable();
-		foreach ($dataArr as $key => $val) {
-			$this->model->{$key} = $val;
-			$this->setModifiedFillableArr($key);
-			$this->assignValueState = true;
+		$keyData = array_keys($dataArr)[0];
+		$valData = array_values($dataArr)[0];
 
-			if (!in_array($key, $fillableArr)) {
-				throw new Exception($key . " not contained in fillable values of model!");
-			}
+		if (!in_array($keyData, $this->model->getFillable())) {
+			throw new Exception($keyData . " not contained in fillable values of model!");
 		}
+
+		$this->model->{$keyData} = $valData;
+
+		$this->removeItemOfFillableArr($keyData);
+
+		$this->assignValueFlag = true;
 	}
 
 	/**
@@ -82,11 +88,11 @@ class ModelRecorder
 	 */
 	public function save()
 	{
-		if ($this->assignValueState === false) {
-			$this->setModifiedFillableArr($this->ignoredValue);
+		if ($this->assignValueFlag === false) {
+			$this->removeItemOfFillableArr($this->ignoredValue);
 		}
 
-		foreach ($this->modifiedFillableArr as $item) {
+		foreach ($this->fillableArr as $item) {
 			$this->model->{$item} = $this->request->{$item};
 		}
 

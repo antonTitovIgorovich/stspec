@@ -4,10 +4,7 @@ namespace St\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Storage;
-use St\Helpers\ImageStorageManager\{
-	ImageStorageManager,
-	ImageStorageManagerContract
-};
+use St\Helpers\ImageStorageManager\ImageStorageManager;
 
 class ImageStorageManagerProvider extends ServiceProvider
 {

@@ -38,10 +38,13 @@ class CreateBlog
 	public function handle(OnCreateBlog $event)
 	{
 		$modelRecorder = new ModelRecorder($this->model, $event->request);
+		
 		$callback = function ($fileName) use ($modelRecorder) {
 			$modelRecorder->assignValue([self::INPUT_NAME => $fileName]);
 		};
+
 		$this->imgFileManager->uploadImageIfExist($event->request, $callback);
+		
 		$modelRecorder->save();
 
 		$event->setCreatedBlogId($this->model->id);

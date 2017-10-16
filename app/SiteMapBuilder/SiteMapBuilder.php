@@ -80,12 +80,13 @@ class SiteMapBuilder
 
 	public function build()
 	{
-		if (!$this->siteMapApp->isCached())
+		if (!$this->siteMapApp->isCached()) {
 			$this->createFromIndexPage()
 				->createFromBlogListPage()
 				->createFromBlogArticlePages()
 				->createFromServiceArticlePages()
 				->createFromContactPage();
+		}
 	}
 
 	public function renderXml()
