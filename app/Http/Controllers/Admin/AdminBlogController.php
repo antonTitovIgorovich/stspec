@@ -20,12 +20,6 @@ class AdminBlogController extends Controller
 	 */
 	private $repository;
 
-//	private static function getImageManager(string $inputName, string $subFolder)
-//	{
-//		return App::make('ImageUploader')
-//			->setInputName($inputName)
-//			->setDestinationFolder('blog/' . $subFolder);
-//	}
 
 	public function __construct(BlogRepoContract $repository)
 	{
@@ -88,8 +82,8 @@ class AdminBlogController extends Controller
 	 */
 	public function edit($id)
 	{
-		$content = Blog::find($id);
-		return view('admin.blog.blog_edit', ['content' => $content]);
+		$content = $this->repository->getById($id);
+		return view('admin.blog.blog_edit', compact('content'));
 	}
 
 	/**
